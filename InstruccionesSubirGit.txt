@@ -1,0 +1,7 @@
+Utilizar Github
+
+git add .
+git commit -m "Descripcion"
+git push -u origin-main
+
+//No necesidad de pull 
