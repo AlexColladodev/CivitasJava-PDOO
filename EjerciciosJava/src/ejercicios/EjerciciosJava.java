@@ -138,21 +138,27 @@ public class EjerciciosJava {
     
         int casillaMenorCoste = 1;
         int casillaMayorCoste = 1;
+        float suma = 0;
+        float promedioPrecioCompra = 0;
     
-        for(int i = 2; i < 6; i++){
+        for(int i = 1; i < 6; i++){
             
             if(tablero.getCasilla(i).getPrecioCompra() < tablero.getCasilla(casillaMenorCoste).getPrecioCompra()){
                 casillaMenorCoste = i;
             }
     
             if(tablero.getCasilla(i).getPrecioCompra() > tablero.getCasilla(casillaMayorCoste).getPrecioCompra()){
-                casillaMenorCoste = i;
+                casillaMayorCoste = i;
             }
+            
+            suma += tablero.getCasilla(i).getPrecioCompra();
+            promedioPrecioCompra = suma / 6;
             
         }
         
         System.out.println("CASILLA CON MENOR PRECIO DE COMPRA: " + tablero.getCasilla(casillaMenorCoste).getNombre());
         System.out.println("CASILLA CON MAYOR PRECIO DE COMPRA: " + tablero.getCasilla(casillaMayorCoste).getNombre());
+        System.out.println("PROMEDIO DE LAS CASILLAS PRECIO DE COMPRA: " + promedioPrecioCompra);
         
     //FIN PROGRAMA PRINCIPAL
     }
