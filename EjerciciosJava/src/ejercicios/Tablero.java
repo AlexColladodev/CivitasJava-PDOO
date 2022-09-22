@@ -39,8 +39,9 @@ public class Tablero {
     
     //Metodos de instancia de paquete =? publicos
     
-    //Solo lo devuelve y lo deja en false
+    //Solo lo devuelve y lo deja en false // Preguntar
     boolean computarPasoPorSalida(){
+        
         return porSalida;
     }
     
@@ -55,8 +56,18 @@ public class Tablero {
     }
     
     int nuevaPosicion(int actual, int tirada){
-        return actual + tirada;
+        
+        int nuevaPosicion = (actual+tirada) % casillas.size();
+        
+        //Si la nueva posicion no es el resultado de sumar actual + tirada entonces se habra pasado por salida
+        if(nuevaPosicion != actual + tirada){
+            porSalida = true;
+        }
+        
+        return (actual+tirada) % casillas.size();
     }
+    
+    
     
     
     
