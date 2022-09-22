@@ -1,10 +1,8 @@
 
 package ejercicios;
 
-/**
- *
- * @author SatoriAlex // Alexander Collado Rojas Y7412507N
- */
+//@author SatoriAlex // Alexander Collado Rojas Y7412507N
+
 public class EjerciciosJava {
 
     
@@ -36,6 +34,27 @@ public class EjerciciosJava {
         
         System.out.println("PrecioAlquiler Parcela1: " + par1.getPrecioAlquilerCompleto());
         System.out.println("PrecioAlquiler Parcela2: " + par2.getPrecioAlquilerCompleto());
+        
+        
+        Parcela par3 = par2; //Igualdad de identidad prueba
+        Parcela par4 = new Parcela("Parcela2", 11.2f, 12.5f, 25.2f); //Igualdad de estado prueba
+        
+        //Construir las casas y hoteles para tener el mismo estado
+        par4.construirCasa();
+        par4.construirHotel();
+        par4.construirHotel();
+        
+        //par3.construirCasa(); //A; apuntar a la misma direcci[on de memoria si par3 cambia entonces tambien cambia par2
+        
+        System.out.println("Igualdad de Identidad");
+        System.out.println("Parcela 1 con Parcela 2: " + par1.igualdadIdentidad(par2)); // false NO IGUALDAD NI DE IDENTIDAD NI DE ESTADO
+        System.out.println("Parcela 2 con Parcela 3: " + par2.igualdadIdentidad(par3)); // true IGUALDAD DE IDENTIDAD Y DE ESTADO
+        System.out.println("Parcela 2 con Parcela 4: " + par2.igualdadIdentidad(par4)); // false NO IGUALDAD DE IDENTIDAD PERO SI DE ESTADO
+        
+        System.out.println("Igualdad de Estado");
+        System.out.println("Parcela 1 con Parcela 2: " + par1.igualdadEstado(par2)); // false NO IGUALDAD NI DE IDENTIDAD NI DE ESTADO
+        System.out.println("Parcela 2 con Parcela 3: " + par2.igualdadEstado(par3)); // false IGUALDAD DE IDENTIDAD Y DE ESTADO
+        System.out.println("Parcela 2 con Parcela 4: " + par2.igualdadEstado(par4)); // true NO IGUALDAD DE IDENTIDAD PERO SI DE ESTADO
         //FIN de prueba de primera parte
         
     }

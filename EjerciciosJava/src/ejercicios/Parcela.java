@@ -6,6 +6,9 @@ package ejercicios;
 public class Parcela {
     
     //Atributos de clases -- llevan static
+    static final float FACTORALQUILERCALLE = 1.0f;
+    static final float FACTORALQUILERCASA = 1.0f;
+    static final float FACTORALQUILERHOTEL = 4.0f;
     
     //Atributos de instancia
     private String nombre;
@@ -50,7 +53,7 @@ public class Parcela {
     
     //Formula indicada en las reglas del juego 
     float getPrecioAlquilerCompleto(){
-        return (precioBaseAlquiler * ( 1 + numCasas + numHoteles * 4));
+        return (precioBaseAlquiler * ( FACTORALQUILERCALLE + numCasas * FACTORALQUILERCASA + numHoteles * FACTORALQUILERHOTEL));
     }
     
     //Metodos Modificadores
@@ -66,6 +69,32 @@ public class Parcela {
         numHoteles++;
         
         return true;
+    }
+    
+    //Metodos
+    boolean igualdadIdentidad(Parcela otraParcela){
+        
+        boolean identidad = false;
+        
+        if(this == otraParcela){
+            identidad = true;
+        }
+        
+        return identidad;
+    }
+    
+    boolean igualdadEstado(Parcela otraParcela){
+        
+        boolean estado = false;
+        
+        if((this.nombre.equals(otraParcela.nombre)) && this.precioCompra == otraParcela.precioCompra && this.precioEdificar == otraParcela.precioEdificar 
+                && this.precioBaseAlquiler == otraParcela.precioBaseAlquiler && this.numCasas == otraParcela.numCasas && this.numHoteles == otraParcela.numHoteles)
+        {
+            estado = true;
+        }
+        
+        return estado;
+        
     }
        
 }
