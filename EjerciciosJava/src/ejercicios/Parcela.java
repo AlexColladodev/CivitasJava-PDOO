@@ -15,6 +15,35 @@ public class Parcela {
     private float precioCompra, precioEdificar, precioBaseAlquiler;
     private int numCasas, numHoteles;
     
+    //Cambios SESION 1
+    private float largo;
+    private float ancho;
+    
+    //Metodos Getter y Setters
+    float getLargo(){
+        return largo;
+    }
+    
+    float getAncho(){
+        return ancho;
+    }
+    
+    void setAncho(float ancho){
+        this.ancho = ancho;
+    }
+    
+    void setLargo(float largo){
+        this.largo = largo;
+    }
+    
+    float getDimension(){
+        return largo * ancho;
+    }
+    
+    float costePorMetroCuadrado(){
+        return getDimension() / precioCompra;
+    }
+    
     //Constructores
     Parcela(String nombre, float precioCompra, float precioEdificar, float precioBaseAlquiler){
         

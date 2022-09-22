@@ -33,9 +33,27 @@ public class Casilla {
         return (precioBaseAlquiler * ( FACTORALQUILERCALLE + numCasas * FACTORALQUILERCASA + numHoteles * FACTORALQUILERHOTEL));
     }
     
+    //Getters
+    String getNombre(){
+        return nombre;
+    }
+    
+    float getPrecioCompra(){
+        return precioCompra;
+    }
+    
+    float getPrecioEdificar(){
+        return precioEdificar;
+    }
+    
+    float getPrecioBaseAlquiler(){
+        return precioBaseAlquiler;
+    }
+    
     //Metodo de Instancia
     
     //Metodo para devolver mediante una cadena el estado de un objeto
+    @Override
     public String toString(){
         String cadena;
         

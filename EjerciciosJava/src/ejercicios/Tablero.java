@@ -30,7 +30,7 @@ public class Tablero {
         
         boolean correct = false;
         
-        if(numCasilla > 0){
+        if(numCasilla >= 0){
             correct = true;
         }
         
@@ -40,12 +40,11 @@ public class Tablero {
     //Metodos de instancia de paquete =? publicos
     
     //Solo lo devuelve y lo deja en false // Preguntar
-    boolean computarPasoPorSalida(){
-        
+    boolean computarPasoPorSalida(){       
         return porSalida;
     }
     
-    void aniadeCasille(Casilla casilla){
+    void aniadeCasilla(Casilla casilla){
         casillas.add(casilla);
     }
     

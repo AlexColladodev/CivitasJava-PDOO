@@ -3,13 +3,14 @@ package ejercicios;
 
 //@author SatoriAlex // Alexander Collado Rojas Y7412507N
 
-public class EjerciciosJava {
 
+public class EjerciciosJava {
+   
     
     public static void main(String[] args) {
         
         
- 
+ /* PARCELA
         //Probando Primera Parte PARCELA
         //Para mandar valores flotantes y no mande error como double hay que poner la f
         Parcela par1 = new Parcela("Parcela1", 12.3f, 15.5f, 12.2f);
@@ -56,7 +57,104 @@ public class EjerciciosJava {
         System.out.println("Parcela 2 con Parcela 3: " + par2.igualdadEstado(par3)); // false IGUALDAD DE IDENTIDAD Y DE ESTADO
         System.out.println("Parcela 2 con Parcela 4: " + par2.igualdadEstado(par4)); // true NO IGUALDAD DE IDENTIDAD PERO SI DE ESTADO
         //FIN de prueba de primera parte
+     FIN PARCELA */
+ 
+    // PROGRAMA PRINCIPAL
+    
+    //UNO: Ver si las estadisticas de los dados sea aceptable.
+        //Se puede hacer con un ArrayList pero ahorita no me acuerdo xd
+        int n_jugadores = 4;
+        int jugador0 = 0;
+        int jugador1 = 0;
+        int jugador2 = 0;
+        int jugador3 = 0;
         
+        //ArrayList<Integer> arl = new ArrayList<Integer>();
+
+        for(int i = 0; i < 100; i++){          
+            switch(Dado.getInstance().quienEmpieza(n_jugadores)){
+                case 0: jugador0++; break;
+                case 1: jugador1++; break;
+                case 2: jugador2++; break;
+                case 3: jugador3++; break;
+            }
+        }
+        System.out.println("PRUEBA 1");
+        System.out.println("Jugador 1: " + jugador0 +
+                            " Jugador 2: " + jugador1 + 
+                            " Jugador 3: " + jugador2 + 
+                            " Jugador 4: " + jugador3);
+        
+    //DOS: FUNCIONAMIENTO DEL MODO DEBUG DEL DADO ACTIVANDO Y DESACTIVANDO
+        
+        System.out.println("PRUEBA 2");
+        Dado.getInstance().setDebug(true);
+        
+        System.out.println("DEBUG ACTIVADO");
+        for(int i = 0; i < 10; i++){
+            System.out.println("Tirada " + i + " valor: " + Dado.getInstance().tirar());
+        }
+        
+        Dado.getInstance().setDebug(false);
+        
+        System.out.println("DEBUG DESACTIVADO");
+        for(int i = 0; i < 10; i++){
+            System.out.println("Tirada " + i + " valor: " + Dado.getInstance().tirar());
+        }
+        
+    //TRES: PROBAR getUltimoResultado DEL DADO
+    
+        System.out.println("PRUEBA 3");
+        System.out.println("Tirada 0: " + Dado.getInstance().tirar());
+        System.out.println("Obteniendo resultado de tirada anterior: " + Dado.getInstance().getUltimoResultado());
+        
+        System.out.println("Tirada 1: " + Dado.getInstance().tirar());
+        System.out.println("Obteniendo resultado de tirada anterior: " + Dado.getInstance().getUltimoResultado());
+        
+    //CUATRO: MOSTRR UN VALOR  DE CADA TIPO DE ENUMERADO
+    
+        System.out.println("PRUEBA 4");
+        
+        System.out.println("ENUMERADO TipoCasilla: " + TipoCasilla.CALLE);
+        
+        System.out.println("ENUMERADO TipoSorpresa: " + TipoSorpresa.PAGARCOBRAR);
+        
+    //CINCO: CREACION DE OBJETO TABLERO Y REALIZAR TESTS
+    
+        Tablero tablero = new Tablero();
+        tablero.aniadeCasilla(new Casilla(TipoCasilla.CALLE, "Primera Parada", 11.5f, 17.2f, 22.3f));
+        tablero.aniadeCasilla(new Casilla(TipoCasilla.CALLE, "ETSIIT", 4.5f, 78.2f, 3.3f));
+        tablero.aniadeCasilla(new Casilla(TipoCasilla.CALLE, "Samsung", 41.5f, 87.2f, 21.3f));
+        tablero.aniadeCasilla(new Casilla(TipoCasilla.CALLE, "MultiPlaza", 42.9f, 47.2f, 96.3f));
+        tablero.aniadeCasilla(new Casilla(TipoCasilla.CALLE, "Soho Mall", 3.7f, 21.66f, 12.63f));
+        tablero.aniadeCasilla(new Casilla(TipoCasilla.CALLE, "Town Center", 17.8f, 32.2f, 27.3f));
+       
+       //Porque utilice 6 casillas
+       for(int i = 0; i < 7; i++){
+           System.out.println(tablero.getCasilla(i).toString());
+       }
+       
+    //SEIS: PRUEBA DE PRECIO DE LAS CALLES Y MEDIA
+    
+        int casillaMenorCoste = 1;
+        int casillaMayorCoste = 1;
+    
+        for(int i = 2; i < 6; i++){
+            
+            if(tablero.getCasilla(i).getPrecioCompra() < tablero.getCasilla(casillaMenorCoste).getPrecioCompra()){
+                casillaMenorCoste = i;
+            }
+    
+            if(tablero.getCasilla(i).getPrecioCompra() > tablero.getCasilla(casillaMayorCoste).getPrecioCompra()){
+                casillaMenorCoste = i;
+            }
+            
+        }
+        
+        System.out.println("CASILLA CON MENOR PRECIO DE COMPRA: " + tablero.getCasilla(casillaMenorCoste).getNombre());
+        System.out.println("CASILLA CON MAYOR PRECIO DE COMPRA: " + tablero.getCasilla(casillaMayorCoste).getNombre());
+        
+    //FIN PROGRAMA PRINCIPAL
     }
     
 }

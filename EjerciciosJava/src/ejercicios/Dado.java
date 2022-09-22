@@ -15,15 +15,16 @@ public class Dado {
     private int ultimoResultado;
     private boolean debug;
     
-    private Dado(){
+    private Dado(){//Hacerlo privado
         debug = false;
         ultimoResultado = 0;
         //Random ya inicializado al declarar objeto dado
     }
     
-    Dado getInstance(){
+    static public Dado getInstance(){
         return instance;
     }
+    
     
     int tirar(){
         
