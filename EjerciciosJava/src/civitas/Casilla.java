@@ -1,5 +1,5 @@
 
-package ejercicios;
+package civitas;
 
 //@author SatoriAlex // Alexander Collado Rojas Y7412507N
 
@@ -35,19 +35,19 @@ public class Casilla {
     
     //Getters
     String getNombre(){
-        return nombre;
+        return this.nombre;
     }
     
     float getPrecioCompra(){
-        return precioCompra;
+        return this.precioCompra;
     }
     
     float getPrecioEdificar(){
-        return precioEdificar;
+        return this.precioEdificar;
     }
     
     float getPrecioBaseAlquiler(){
-        return precioBaseAlquiler;
+        return this.precioBaseAlquiler;
     }
     
     //Metodo de Instancia

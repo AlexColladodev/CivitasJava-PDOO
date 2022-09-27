@@ -1,6 +1,6 @@
 
 
-package ejercicios;
+package civitas;
 
 
 //@author SatoriAlex // Alexander Collado Rojas Y7412507N
@@ -41,7 +41,7 @@ public class Tablero {
     
     //Solo lo devuelve y lo deja en false // Preguntar
     boolean computarPasoPorSalida(){       
-        return porSalida;
+        return this.porSalida;
     }
     
     void aniadeCasilla(Casilla casilla){

@@ -1,5 +1,5 @@
 
-package ejercicios;
+package civitas;
 
 import java.util.Random;
 
@@ -15,14 +15,13 @@ public class Dado {
     private int ultimoResultado;
     private boolean debug;
     
-    private Dado(){//Hacerlo privado
+    private Dado(){ 
         debug = false;
         ultimoResultado = 0;
-        //Random ya inicializado al declarar objeto dado
     }
     
     static public Dado getInstance(){
-        return instance;
+        return Dado.instance;
     }
     
     
@@ -57,7 +56,7 @@ public class Dado {
     }
     
     int getUltimoResultado(){
-        return ultimoResultado;
+        return this.ultimoResultado;
     }
     
 }

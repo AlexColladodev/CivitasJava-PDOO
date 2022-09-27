@@ -1,4 +1,4 @@
-package ejercicios;
+package civitas;
 
 import java.util.ArrayList;
 

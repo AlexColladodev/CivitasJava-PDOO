@@ -1,5 +1,5 @@
 
-package ejercicios;
+package civitas;
 
 //@author SatoriAlex // Alexander Collado Rojas Y7412507N
 
@@ -126,7 +126,7 @@ public class EjerciciosJava {
         tablero.aniadeCasilla(new Casilla(TipoCasilla.CALLE, "ETSIIT", 4.5f, 78.2f, 3.3f));
         tablero.aniadeCasilla(new Casilla(TipoCasilla.CALLE, "Samsung", 41.5f, 87.2f, 21.3f));
         tablero.aniadeCasilla(new Casilla(TipoCasilla.CALLE, "MultiPlaza", 42.9f, 47.2f, 96.3f));
-        tablero.aniadeCasilla(new Casilla(TipoCasilla.CALLE, "Soho Mall", 3.7f, 21.66f, 12.63f));
+        tablero.aniadeCasilla(new Casilla(TipoCasilla.CALLE, "Soho Mall", 22.7f, 21.66f, 12.63f));
         tablero.aniadeCasilla(new Casilla(TipoCasilla.CALLE, "Town Center", 17.8f, 32.2f, 27.3f));
        
        //Porque utilice 6 casillas
@@ -159,6 +159,11 @@ public class EjerciciosJava {
         System.out.println("CASILLA CON MENOR PRECIO DE COMPRA: " + tablero.getCasilla(casillaMenorCoste).getNombre());
         System.out.println("CASILLA CON MAYOR PRECIO DE COMPRA: " + tablero.getCasilla(casillaMayorCoste).getNombre());
         System.out.println("PROMEDIO DE LAS CASILLAS PRECIO DE COMPRA: " + promedioPrecioCompra);
+        
+    //SIETE
+    
+    //OCHO: REALIZAR PRUEBAS PARA VER SI LA TIRADA DE LOS DADOS FUNCIONA CORRECTAMENTE
+    
         
     //FIN PROGRAMA PRINCIPAL
     }

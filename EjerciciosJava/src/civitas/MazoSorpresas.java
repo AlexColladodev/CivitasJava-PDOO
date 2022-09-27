@@ -1,5 +1,5 @@
 
-package ejercicios;
+package civitas;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,6 +29,7 @@ public class MazoSorpresas {
         init();
         
         debug = d;
+        
         String evento = "Modo Debug Activado";
         
         Diario.getInstance().ocurreEvento(evento);
