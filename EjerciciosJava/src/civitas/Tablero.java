@@ -13,7 +13,7 @@ public class Tablero {
     private boolean porSalida;
     
     //Constructor
-    Tablero(){
+    public Tablero(){
         casillas = new ArrayList<>();
         
         casillas.add(new Casilla(TipoCasilla.CALLE, "Salida", 0f, 0f, 0f)); //Incluir la primera casilla de nombre Salida, los demas valores a 0 y de tipo calle por mientras

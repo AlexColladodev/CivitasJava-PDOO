@@ -171,6 +171,18 @@ public class EjerciciosJava {
         }
         
     //FIN PROGRAMA PRINCIPAL
+    
+    //TESTEO PARA LA P2 PROGRAMA PRINCIPAL NO CIVITAS
+        Hotel hotel1 = new Hotel("Hotel Paradise", "PTY", 5);
+        Hotel hotel2 = new Hotel("Hotel Bali", "PTY", 2);
+        System.out.println("Numero de Hoteles: " + Hotel.getNUM_HOTELES());
+        
+        Director dir1 = new Director("Manolo", 258963147l);
+        
+        hotel1.setDirector(dir1);
+        
+        System.out.println("Director del Hotel 1: " + hotel1.getDirector().getNombre());
+    
     }
     
 }
