@@ -1,5 +1,3 @@
-
-
 package civitas;
 
 
@@ -44,6 +42,18 @@ public class Tablero {
         return this.porSalida;
     }
     
+    /* Por salida que creo que puede ser lo que se busca
+    
+    boolean computarPasoPorSalida(){
+        boolean porSalidaAux = porSalida;
+        
+        this.porSalida = false;
+    
+        return porSalidaAux;
+    }
+    
+    */
+    
     void aniadeCasilla(Casilla casilla){
         casillas.add(casilla);
     }
@@ -63,7 +73,7 @@ public class Tablero {
             porSalida = true;
         }
         
-        return (actual+tirada) % casillas.size();
+        return nuevaPosicion;
     }
     
     

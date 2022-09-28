@@ -29,24 +29,24 @@ public class Casilla {
     }
     
     //Formula indicada en las reglas del juego 
-    float getPrecioAlquilerCompleto(){
+    public float getPrecioAlquilerCompleto(){
         return (precioBaseAlquiler * ( FACTORALQUILERCALLE + numCasas * FACTORALQUILERCASA + numHoteles * FACTORALQUILERHOTEL));
     }
     
     //Getters
-    String getNombre(){
+    public String getNombre(){
         return this.nombre;
     }
     
-    float getPrecioCompra(){
+    public float getPrecioCompra(){
         return this.precioCompra;
     }
     
-    float getPrecioEdificar(){
+    public float getPrecioEdificar(){
         return this.precioEdificar;
     }
     
-    float getPrecioBaseAlquiler(){
+    public float getPrecioBaseAlquiler(){
         return this.precioBaseAlquiler;
     }
     
@@ -57,13 +57,13 @@ public class Casilla {
     public String toString(){
         String cadena;
         
-        cadena = "Tipo de Casilla: " + tipo +
-                    " Nombre de Casilla: " + nombre + 
-                    " Precio Compra: " + precioCompra +
-                    " Precio Edificar: " + precioEdificar +
-                    " Precio Base Alquiler: " + precioBaseAlquiler +
-                    " Numero de Casas: " + numCasas + 
-                    " Numero de Hoteles: " + numHoteles;
+        cadena = "Tipo de Casilla: " + this.tipo + 
+                    " Nombre de Casilla: " + this.nombre + 
+                    " Precio Compra: " + this.precioCompra +
+                    " Precio Edificar: " + this.precioEdificar +
+                    " Precio Base Alquiler: " + this.precioBaseAlquiler +
+                    " Numero de Casas: " + this.numCasas + 
+                    " Numero de Hoteles: " + this.numHoteles;
         
         return cadena;
         

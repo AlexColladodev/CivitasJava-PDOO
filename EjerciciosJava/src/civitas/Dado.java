@@ -20,7 +20,7 @@ public class Dado {
         ultimoResultado = 0;
     }
     
-    static public Dado getInstance(){
+    static Dado getInstance(){
         return Dado.instance;
     }
     

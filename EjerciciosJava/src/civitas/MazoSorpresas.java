@@ -17,7 +17,7 @@ public class MazoSorpresas {
     private boolean debug;
     
     //Metodo Privado
-    void init(){
+    private void init(){
         sorpresas = new ArrayList<>();
         barajada = false;
         usadas = 0;
@@ -30,9 +30,11 @@ public class MazoSorpresas {
         
         debug = d;
         
-        String evento = "Modo Debug Activado";
-        
-        Diario.getInstance().ocurreEvento(evento);
+        if(debug){          
+            String evento = "Modo Debug Activado";
+            Diario.getInstance().ocurreEvento(evento);   
+        }
+
     }
     
     MazoSorpresas(){

@@ -3,6 +3,7 @@ package civitas;
 
 //@author SatoriAlex // Alexander Collado Rojas Y7412507N
 
+import java.util.ArrayList;
 
 public class EjerciciosJava {
    
@@ -64,26 +65,25 @@ public class EjerciciosJava {
     //UNO: Ver si las estadisticas de los dados sea aceptable.
         //Se puede hacer con un ArrayList pero ahorita no me acuerdo xd
         int n_jugadores = 4;
-        int jugador0 = 0;
-        int jugador1 = 0;
-        int jugador2 = 0;
-        int jugador3 = 0;
+        int valor_dado = 0;
         
-        //ArrayList<Integer> arl = new ArrayList<Integer>();
+        ArrayList<Integer> jugadores = new ArrayList<>();
+        
+        for(int i = 0; i < n_jugadores; i++){
+            jugadores.add(0);
+        }
 
-        for(int i = 0; i < 100; i++){          
-            switch(Dado.getInstance().quienEmpieza(n_jugadores)){
-                case 0: jugador0++; break;
-                case 1: jugador1++; break;
-                case 2: jugador2++; break;
-                case 3: jugador3++; break;
-            }
+        //Se van generando los valores aleatories de 0 a n-1 jugadores entonces en la posicion
+            // i del array de jugadores se reemplaza el anterior + 1. Es decir este se incrementa
+        for(int i = 0; i < 100; i++){     
+            valor_dado = Dado.getInstance().quienEmpieza(n_jugadores);
+            jugadores.set(valor_dado, jugadores.get(valor_dado)+1);
         }
         System.out.println("PRUEBA 1");
-        System.out.println("Jugador 1: " + jugador0 +
-                            " Jugador 2: " + jugador1 + 
-                            " Jugador 3: " + jugador2 + 
-                            " Jugador 4: " + jugador3);
+        System.out.println( " Jugador 1: " + jugadores.get(0) + System.lineSeparator() +
+                            " Jugador 2: " + jugadores.get(1) + System.lineSeparator() +
+                            " Jugador 3: " + jugadores.get(2) + System.lineSeparator() +
+                            " Jugador 4: " + jugadores.get(3));
         
     //DOS: FUNCIONAMIENTO DEL MODO DEBUG DEL DADO ACTIVANDO Y DESACTIVANDO
         
@@ -92,7 +92,7 @@ public class EjerciciosJava {
         
         System.out.println("DEBUG ACTIVADO");
         for(int i = 0; i < 10; i++){
-            System.out.println("Tirada " + i + " valor: " + Dado.getInstance().tirar());
+            System.out.println("Debug Activado Tirada " + i + " valor: " + Dado.getInstance().tirar());
         }
         
         Dado.getInstance().setDebug(false);
@@ -116,7 +116,7 @@ public class EjerciciosJava {
         System.out.println("PRUEBA 4");
         
         System.out.println("ENUMERADO TipoCasilla: " + TipoCasilla.CALLE);
-        
+        System.out.println("ENUMERADO EstadosJuego: " + EstadosJuego.INICIO_TURNO);
         System.out.println("ENUMERADO TipoSorpresa: " + TipoSorpresa.PAGARCOBRAR);
         
     //CINCO: CREACION DE OBJETO TABLERO Y REALIZAR TESTS
@@ -160,10 +160,15 @@ public class EjerciciosJava {
         System.out.println("CASILLA CON MAYOR PRECIO DE COMPRA: " + tablero.getCasilla(casillaMayorCoste).getNombre());
         System.out.println("PROMEDIO DE LAS CASILLAS PRECIO DE COMPRA: " + promedioPrecioCompra);
         
-    //SIETE
+    //SIETE: PROBAR LA CLASE DIARIO
+    
+        while(Diario.getInstance().eventosPendientes())
+            System.out.println(Diario.getInstance().leerEvento());
     
     //OCHO: REALIZAR PRUEBAS PARA VER SI LA TIRADA DE LOS DADOS FUNCIONA CORRECTAMENTE
-    
+        for(int i = 0; i < 6; i++){ //Solo hay 6 casillas actualmente
+            System.out.println("Posicion Actual: " + i + " siguiente posicion: " + tablero.nuevaPosicion(i, Dado.getInstance().tirar()) + " La ultima tirada fue: " + Dado.getInstance().getUltimoResultado());
+        }
         
     //FIN PROGRAMA PRINCIPAL
     }
