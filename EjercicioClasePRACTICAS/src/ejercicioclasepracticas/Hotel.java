@@ -1,5 +1,5 @@
 
-package civitas;
+package ejercicioclasepracticas;
 
 /**
  *

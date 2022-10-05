@@ -6,9 +6,9 @@ package civitas;
 public class Casilla {
     
     //Atributos de clases -- llevan static
-    static final float FACTORALQUILERCALLE = 1.0f;
-    static final float FACTORALQUILERCASA = 1.0f;
-    static final float FACTORALQUILERHOTEL = 4.0f;
+    private static final float FACTORALQUILERCALLE = 1.0f;
+    private static final float FACTORALQUILERCASA = 1.0f;
+    private static final float FACTORALQUILERHOTEL = 4.0f;
     
     //Atributos de instancia
     private TipoCasilla tipo;

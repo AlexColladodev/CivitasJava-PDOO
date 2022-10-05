@@ -1,57 +1,59 @@
 
-package civitas;
+package ejercicioclasepracticas;
 
 //@author SatoriAlex // Alexander Collado Rojas Y7412507N
 
 public class Parcela {
     
     //Atributos de clases -- llevan static
-    static final float FACTORALQUILERCALLE = 1.0f;
-    static final float FACTORALQUILERCASA = 1.0f;
-    static final float FACTORALQUILERHOTEL = 4.0f;
+    private static final float FACTORALQUILERCALLE = 1.0f;
+    private static final float FACTORALQUILERCASA = 1.0f;
+    private static final float FACTORALQUILERHOTEL = 4.0f;
     
     //Atributos de instancia
     private String nombre;
     private float precioCompra, precioEdificar, precioBaseAlquiler;
     private int numCasas, numHoteles;
+    private Propietario propietario;
     
     //Cambios SESION 1
     private float largo;
     private float ancho;
     
     //Metodos Getter y Setters
-    float getLargo(){
+    public float getLargo(){
         return largo;
     }
     
-    float getAncho(){
+    public float getAncho(){
         return ancho;
     }
     
-    void setAncho(float ancho){
+    public void setAncho(float ancho){
         this.ancho = ancho;
     }
     
-    void setLargo(float largo){
+    public void setLargo(float largo){
         this.largo = largo;
     }
     
-    float getDimension(){
+    public float getDimension(){
         return largo * ancho;
     }
     
-    float costePorMetroCuadrado(){
+    public float costePorMetroCuadrado(){
         return getDimension() / precioCompra;
     }
     
     //Constructores
-    Parcela(String nombre, float precioCompra, float precioEdificar, float precioBaseAlquiler){
+    Parcela(String nombre, float precioCompra, float precioEdificar, float precioBaseAlquiler, Propietario propietario){
         
         //El this para identificar el objeto del metodo
         this.nombre = nombre;
         this.precioCompra = precioCompra;
         this.precioEdificar = precioEdificar;
         this.precioBaseAlquiler = precioBaseAlquiler;
+        this.propietario = propietario;
         
         //Todos los atributos deben ser inicializados en los constructores
         numCasas = 0;
@@ -66,6 +68,10 @@ public class Parcela {
     
     float getPrecioCompra(){
         return precioCompra;
+    }
+    
+    Propietario getPropietario(){
+        return this.propietario;
     }
     
     float getPrecioEdificar(){
