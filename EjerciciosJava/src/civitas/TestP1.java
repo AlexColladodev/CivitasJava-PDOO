@@ -5,7 +5,7 @@ package civitas;
 
 import java.util.ArrayList;
 
-public class EjerciciosJava {
+public class TestP1 {
     
     public static void main(String[] args) {
         
@@ -67,7 +67,7 @@ public class EjerciciosJava {
         System.out.println("PRUEBA 4");
         
         System.out.println("ENUMERADO TipoCasilla: " + TipoCasilla.CALLE);
-        System.out.println("ENUMERADO EstadosJuego: " + EstadosJuego.INICIO_TURNO);
+        System.out.println("ENUMERADO EstadosJuego: " + EstadoJuego.INICIO_TURNO);
         System.out.println("ENUMERADO TipoSorpresa: " + TipoSorpresa.PAGARCOBRAR);
         
     //CINCO: CREACION DE OBJETO TABLERO Y REALIZAR TESTS

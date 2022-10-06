@@ -3,6 +3,9 @@ package ejercicioclasepracticas;
 
 //@author SatoriAlex // Alexander Collado Rojas Y7412507N
 
+import java.util.ArrayList;
+
+
 public class Parcela {
     
     //Atributos de clases -- llevan static
@@ -15,6 +18,7 @@ public class Parcela {
     private float precioCompra, precioEdificar, precioBaseAlquiler;
     private int numCasas, numHoteles;
     private Propietario propietario;
+    private ArrayList<Hotel> hoteles = new ArrayList<>();
     
     //Cambios SESION 1
     private float largo;
@@ -46,14 +50,13 @@ public class Parcela {
     }
     
     //Constructores
-    Parcela(String nombre, float precioCompra, float precioEdificar, float precioBaseAlquiler, Propietario propietario){
+    Parcela(String nombre, float precioCompra, float precioEdificar, float precioBaseAlquiler){
         
         //El this para identificar el objeto del metodo
         this.nombre = nombre;
         this.precioCompra = precioCompra;
         this.precioEdificar = precioEdificar;
         this.precioBaseAlquiler = precioBaseAlquiler;
-        this.propietario = propietario;
         
         //Todos los atributos deben ser inicializados en los constructores
         numCasas = 0;
@@ -130,6 +133,14 @@ public class Parcela {
         
         return estado;
         
+    }
+    
+    public void addHotel(Hotel hotel){
+        hoteles.add(hotel);
+    }
+    
+    public ArrayList<Hotel> getHoteles(){
+        return this.hoteles;
     }
        
 }

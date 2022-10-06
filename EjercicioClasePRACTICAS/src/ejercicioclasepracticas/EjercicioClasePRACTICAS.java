@@ -98,7 +98,7 @@ public class EjercicioClasePRACTICAS {
         System.out.println("Parcela 2 con Parcela 4: " + par2.igualdadEstado(par4)); // true NO IGUALDAD DE IDENTIDAD PERO SI DE ESTADO
         //FIN de prueba de primera parte*/
         
-        
+        /*
         System.out.println("/////// EJERCICIOS DE CLASE 2 ////////");
         ArrayList<Parcela> parcelas = new ArrayList<>();
         ArrayList<Propietario> propietarios = new ArrayList<>();
@@ -120,12 +120,25 @@ public class EjercicioClasePRACTICAS {
         
         
         System.out.println("El propietario con mas coste de compra en todas las parcelas es: " + conMasParcelas(parcelas));        
-     
+     */
 
     //TESTEO PARA LA P2 PROGRAMA PRINCIPAL NO CIVITAS
-        Hotel hotel1 = new Hotel("Hotel Paradise", "PTY", 5);
-        Hotel hotel2 = new Hotel("Hotel Bali", "PTY", 2);
+        Parcela par1 = new Parcela("Parcela1", 12.3f, 15.5f, 12.2f); 
+        Caracteristicas car1 = new Caracteristicas();
+        Caracteristicas car2 = new Caracteristicas();
+        Caracteristicas car3 = new Caracteristicas();
+        
+        Hotel hotel1 = new Hotel("Hotel Paradise", "PTY", 5, par1, car1);
+        Hotel hotel2 = new Hotel("Hotel Bali", "PTY", 2, par1, car2);
+        Hotel hotel3 = new Hotel("Hotel Bali", "PTY", 2, par1, car3);
         System.out.println("Numero de Hoteles: " + Hotel.getNUM_HOTELES());
+        
+        hotel1.getCaracteristicas().setNumHabitaciones(5);
+        hotel1.getCaracteristicas().setPrecioMedioHabitacion(22.6f);
+        hotel2.getCaracteristicas().setNumHabitaciones(3);
+        hotel2.getCaracteristicas().setPrecioMedioHabitacion(14.2f);
+        hotel3.getCaracteristicas().setNumHabitaciones(7);
+        hotel3.getCaracteristicas().setPrecioMedioHabitacion(63.4f);
         
         Director dir1 = new Director("Manolo", 258963147l);
         
@@ -133,7 +146,40 @@ public class EjercicioClasePRACTICAS {
         
         System.out.println("Director del Hotel 1: " + hotel1.getDirector().getNombre());
         
-
+        Cliente client1 = new Cliente("Y7412507N", "Alex");
+        Reserva reserv1 = new Reserva("25/10/22", "22/3/21", client1, hotel2);
+        Reserva reserv2 = new Reserva("22/09/22", "22/3/21", client1, hotel2);
+        
+        hotel2.addReserva(client1, reserv1.getFechaEntrada(), reserv1.getFechaSalida());
+        //hotel2.addReserva(client1, reserv2.getFechaEntrada(), reserv2.getFechaSalida());
+        client1.addReserva(reserv1);
+        //client1.addReserva(reserv2);
+        
+        for(int i = 0; i < hotel2.getReservas().size(); i++){
+            System.out.println(hotel2.getReservas().get(i).getCliente().getNombre() + " " + hotel2.getReservas().get(i).getFechaEntrada());
+        }
+        
+        for(int i = 0; i < client1.getReservas().size(); i++){
+            System.out.println(client1.getReservas().get(i).getFechaEntrada());
+        }
+        
+        System.out.println("RESULTADOS A EJERCICIO DE CLASE 10/06/22");
+        
+        int sumaHabitaciones = 0;
+        
+        for(int i = 0; i < par1.getHoteles().size(); i++){
+            sumaHabitaciones = sumaHabitaciones + par1.getHoteles().get(i).getCaracteristicas().getNumHabitaciones();
+        }
+        
+        System.out.println("La suma de todas las habitaciones de la parcela " + par1.getNombre() + " es " + sumaHabitaciones);
+        
+        float sumaPrecio = 0;
+        
+        for(int i = 0; i < par1.getHoteles().size(); i++){
+            sumaPrecio = sumaPrecio +  (par1.getHoteles().get(i).getCaracteristicas().getNumHabitaciones() * par1.getHoteles().get(i).getCaracteristicas().getPrecioMedioHabitacion());
+        }
+        
+        System.out.println("El precio total de la suma de las habitaciones respecto al precio medio por habitacion es de " + sumaPrecio);
         
     }
     
