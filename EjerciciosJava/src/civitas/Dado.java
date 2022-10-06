@@ -20,7 +20,7 @@ public class Dado {
         ultimoResultado = 0;
     }
     
-    static Dado getInstance(){
+    public static Dado getInstance(){
         return Dado.instance;
     }
     
@@ -41,7 +41,7 @@ public class Dado {
         return random.nextInt(n);
     }
     
-    void setDebug(boolean d){
+    public void setDebug(boolean d){
         
         debug = d;
         String evento;

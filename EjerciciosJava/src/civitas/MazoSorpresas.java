@@ -25,8 +25,7 @@ public class MazoSorpresas {
     
     //Constructores
     MazoSorpresas(boolean d){
-        
-        init();
+        this.init();
         
         debug = d;
         
@@ -39,7 +38,7 @@ public class MazoSorpresas {
     
     MazoSorpresas(){
         
-        init();
+        this.init();
         
         debug = false;
     }

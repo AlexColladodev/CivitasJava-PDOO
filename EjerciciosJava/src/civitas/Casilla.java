@@ -15,8 +15,11 @@ public class Casilla {
     private String nombre;
     private float precioCompra, precioEdificar, precioBaseAlquiler;
     private int numCasas, numHoteles;
+    private MazoSorpresas mazo;
+    private Sorpresa sorpresa;
     
-    //Constructor
+    //Constructores
+    /*
     Casilla(TipoCasilla unTipo, String unNombre, float unPrecioCompra, float unPrecioEdificar, float unPrecioAlquilerBase){
         tipo = unTipo;
         nombre = unNombre;
@@ -26,6 +29,47 @@ public class Casilla {
         
         numCasas = 0;
         numHoteles = 0;
+    }*/
+    //PARA CASILLAS TIPO DESCANSO
+    Casilla(String nombre){
+        this.init();
+        
+        this.tipo = TipoCasilla.DESCANSO;
+        this.nombre = nombre;
+    }
+    
+    //PARA CASILLAS TIPO CALLE
+    Casilla(String titulo, float precioCompra, float precioEdificar, float precioBaseAlquiler){
+        this.init();
+        
+        this.tipo = TipoCasilla.CALLE;
+        this.nombre = titulo;
+        this.precioBaseAlquiler = precioBaseAlquiler;
+        this.precioEdificar = precioEdificar;
+        this.precioCompra = precioCompra;
+    }
+    
+    //PARA CASILLAS TIPO SORPRESAS
+    Casilla(String nombre, MazoSorpresas mazo){
+        this.init();
+        
+        this.tipo = TipoCasilla.SORPRESA;
+        this.nombre = nombre;
+        this.mazo = mazo;
+    }
+    
+    private void init(){
+        this.tipo = null;
+        this.mazo = null;
+        this.sorpresa = null;
+        
+        this.nombre = " ";
+        this.precioBaseAlquiler = 0;
+        this.precioCompra = 0;
+        this.precioEdificar = 0;
+        
+        this.numCasas = 0;
+        this.numHoteles = 0;
     }
     
     //Formula indicada en las reglas del juego 
@@ -48,6 +92,10 @@ public class Casilla {
     
     public float getPrecioBaseAlquiler(){
         return this.precioBaseAlquiler;
+    }
+    
+    public int cantidadCasasHoteles(){
+        return numCasas + numHoteles;
     }
     
     //Metodo de Instancia
