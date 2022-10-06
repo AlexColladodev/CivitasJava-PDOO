@@ -3,6 +3,19 @@ package civitas;
 
 //@author SatoriAlex // Alexander Collado Rojas Y7412507N
 
+import java.util.ArrayList;
+
+    /*
+    Casilla(TipoCasilla unTipo, String unNombre, float unPrecioCompra, float unPrecioEdificar, float unPrecioAlquilerBase){
+        tipo = unTipo;
+        nombre = unNombre;
+        precioCompra = unPrecioCompra;
+        precioEdificar = unPrecioEdificar;
+        precioBaseAlquiler = unPrecioAlquilerBase;
+        
+        numCasas = 0;
+        numHoteles = 0;
+    }*/
 public class Casilla {
     
     //Atributos de clases -- llevan static
@@ -15,21 +28,14 @@ public class Casilla {
     private String nombre;
     private float precioCompra, precioEdificar, precioBaseAlquiler;
     private int numCasas, numHoteles;
-    private MazoSorpresas mazo;
+    private MazoSorpresas mazo; //CASILLAS TIPO SORPRESA
     private Sorpresa sorpresa;
+    private Jugador propietario;
+    
+    //Metodos de PAQUETE
     
     //Constructores
-    /*
-    Casilla(TipoCasilla unTipo, String unNombre, float unPrecioCompra, float unPrecioEdificar, float unPrecioAlquilerBase){
-        tipo = unTipo;
-        nombre = unNombre;
-        precioCompra = unPrecioCompra;
-        precioEdificar = unPrecioEdificar;
-        precioBaseAlquiler = unPrecioAlquilerBase;
-        
-        numCasas = 0;
-        numHoteles = 0;
-    }*/
+    
     //PARA CASILLAS TIPO DESCANSO
     Casilla(String nombre){
         this.init();
@@ -58,10 +64,44 @@ public class Casilla {
         this.mazo = mazo;
     }
     
+    void recibeJugador(int iactual, ArrayList<Jugador> todos){
+        
+    }
+    
+    boolean comprar(Jugador jugador){
+        
+    }
+    
+    boolean construirCasa(Jugador jugador){
+        
+    }
+    
+    boolean construirHotel(Jugador jugador){
+        
+    }
+    
+    boolean derruirCasas(int numero, Jugador jugador){
+        
+        boolean realizado = false;
+        
+        if(esEsteElPropietario(jugador) && this.numCasas >= numero){
+            numCasas -= numero;
+            realizado = true;
+        }
+        
+        return realizado;
+    }
+    
+    void informe(int iactual, ArrayList<Jugador> todos){//Informa sobre que jugador ha caido en que casilla
+        Diario.getInstance().ocurreEvento("El jugador " + todos.get(iactual) + " ha caido en la casilla" + this.getNombre());
+    }
+    
+    //Metodos PRIVAOS
     private void init(){
         this.tipo = null;
         this.mazo = null;
         this.sorpresa = null;
+        this.propietario = null;
         
         this.nombre = " ";
         this.precioBaseAlquiler = 0;
@@ -70,8 +110,16 @@ public class Casilla {
         
         this.numCasas = 0;
         this.numHoteles = 0;
+    }   
+    
+    private void recibeJugador_calle(int iactual, ArrayList<Jugador> todos){
+        
     }
     
+    private void recibeJugador_sorpresa(int iactual, ArrayList<Jugador> todos){
+        
+    }
+    //Metodos PUBLICOS
     //Formula indicada en las reglas del juego 
     public float getPrecioAlquilerCompleto(){
         return (precioBaseAlquiler * ( FACTORALQUILERCALLE + numCasas * FACTORALQUILERCASA + numHoteles * FACTORALQUILERHOTEL));
@@ -98,7 +146,14 @@ public class Casilla {
         return numCasas + numHoteles;
     }
     
-    //Metodo de Instancia
+    public int getNumCasas(){
+        return this.numCasas;
+    }
+    
+    public int getNumHoteles(){
+        return this.numHoteles;
+    }
+    
     
     //Metodo para devolver mediante una cadena el estado de un objeto
     @Override
@@ -113,7 +168,37 @@ public class Casilla {
                     " Numero de Casas: " + this.numCasas + 
                     " Numero de Hoteles: " + this.numHoteles;
         
+        if(tienePropietario()){
+            cadena = cadena + "La casilla tiene propietario: " + propietario.getNombre();
+        }
+        
         return cadena;
         
+    }
+    
+    public void tramitarAlquiler(Jugador jugador){
+        if(tienePropietario() && esEsteElPropietario(jugador)){
+            jugador.pagaAlquiler(this.getPrecioAlquilerCompleto());
+            propietario.recibe(this.getPrecioAlquilerCompleto());
+        }
+    }
+    
+    public boolean tienePropietario(){
+        boolean tienePropietario = false;
+        if(propietario != null){
+            tienePropietario = true;
+        }
+        
+        return tienePropietario;
+    }
+    
+    public boolean esEsteElPropietario(Jugador jugador){
+        boolean esteEsElPropietario = false;
+        
+        if(this.propietario == jugador){
+            esteEsElPropietario = true;
+        }
+        
+        return esteEsElPropietario;
     }
 }

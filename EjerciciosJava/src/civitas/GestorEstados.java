@@ -5,43 +5,43 @@ class GestorEstados {
     return (EstadoJuego.INICIO_TURNO);
   }
   
-  OperacionJuego siguienteOperacion(Jugador jugador, EstadoJuego estado) {
-    OperacionJuego op = null;
+  OperacionesJuego siguienteOperacion(Jugador jugador, EstadoJuego estado) {
+    OperacionesJuego op = null;
 
     switch (estado) {
       case INICIO_TURNO :
-          op = OperacionJuego.AVANZAR;
+          op = OperacionesJuego.AVANZAR;
         break;
 
       case DESPUES_AVANZAR :
         if (jugador.getPuedeComprar())
-          op = OperacionJuego.COMPRAR;
+          op = OperacionesJuego.COMPRAR;
         else if (jugador.tieneAlgoQueGestionar())
-          op = OperacionJuego.GESTIONAR;
+          op = OperacionesJuego.GESTIONAR;
         else
-          op = OperacionJuego.PASAR_TURNO;
+          op = OperacionesJuego.PASAR_TURNO;
         break;
 
       case DESPUES_COMPRAR :
         if (jugador.tieneAlgoQueGestionar())
-          op = OperacionJuego.GESTIONAR;
+          op = OperacionesJuego.GESTIONAR;
         else
-          op = OperacionJuego.PASAR_TURNO;
+          op = OperacionesJuego.PASAR_TURNO;
         break;
 
       case DESPUES_GESTIONAR :
-        op = OperacionJuego.PASAR_TURNO;
+        op = OperacionesJuego.PASAR_TURNO;
         break;        
     }
     return op;
   }
   
-  EstadoJuego siguienteEstado (Jugador jugador, EstadoJuego estado, OperacionJuego operacion) {
+  EstadoJuego siguienteEstado (Jugador jugador, EstadoJuego estado, OperacionesJuego operacion) {
     EstadoJuego siguiente = null;
 
     switch (estado) {
       case INICIO_TURNO :
-        if (operacion==OperacionJuego.AVANZAR)
+        if (operacion==OperacionesJuego.AVANZAR)
           siguiente = EstadoJuego.DESPUES_AVANZAR;
         break;
 
@@ -60,14 +60,14 @@ class GestorEstados {
         break;
 
       case DESPUES_COMPRAR :
-        if (operacion==OperacionJuego.GESTIONAR)
+        if (operacion==OperacionesJuego.GESTIONAR)
           siguiente = EstadoJuego.DESPUES_GESTIONAR;
-        else if (operacion==OperacionJuego.PASAR_TURNO)
+        else if (operacion==OperacionesJuego.PASAR_TURNO)
           siguiente = EstadoJuego.INICIO_TURNO;
         break;
 
       case DESPUES_GESTIONAR :
-        if (operacion==OperacionJuego.PASAR_TURNO)
+        if (operacion==OperacionesJuego.PASAR_TURNO)
           siguiente = EstadoJuego.INICIO_TURNO;
         break;
     }

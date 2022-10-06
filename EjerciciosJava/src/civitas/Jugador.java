@@ -47,7 +47,13 @@ public class Jugador implements Comparable<Jugador>{
     
     //METODOS PRIVADOS
     private boolean existeLaPropiedad(int ip){
+        boolean valorValida = false;
         
+        if(ip >= 0 && ip <= propiedades.size()){
+            valorValida = true;
+        }
+        
+        return valorValida;
     }
     
     private static int getCasasMax(){
@@ -62,16 +68,16 @@ public class Jugador implements Comparable<Jugador>{
         return Jugador.PasoPorSalida;
     }
     
-    private boolean puedoEdificarCasa(Casilla propeidad){
-        
+    private boolean puedoEdificarCasa(Casilla propiedad){ //Puedo edificar si tengo dinero para edificar y si no he llegado al numMaximo de casas
+        return (propiedad.getNumCasas() < Jugador.CasasMax && this.puedoGastar(propiedad.getPrecioEdificar()));
     }
     
-    private boolean puedoEdificarHotel(Casilla propiedad){
-        
+    private boolean puedoEdificarHotel(Casilla propiedad){ //Puedo edificar hotel si tengo las casas necesarias, no he llegado al maximo de hoteles y si tengo dinero
+        return (propiedad.getNumHoteles() < Jugador.HotelesMax && propiedad.getNumCasas() == Jugador.CasasPorHotel);
     }
     
     private boolean puedoGastar(float precio){
-        
+        return this.saldo >= precio;
     }
     
     //Metodos PROTECTED
@@ -105,7 +111,7 @@ public class Jugador implements Comparable<Jugador>{
     }
     
     boolean enBancarrota(){
-        
+        return (this.saldo < 0);
     }
     
     static int getCasasPorHotel(){
@@ -122,38 +128,67 @@ public class Jugador implements Comparable<Jugador>{
     
     boolean modificarSaldo(float cantidad){
         this.saldo = saldo + cantidad;
+        
+        Diario.getInstance().ocurreEvento("Se ha modificado el saldo en: " + cantidad + " el nuevo saldo es de: " + this.saldo);
+        
+        return true;
     }
     
     boolean moverACasilla(int numCasilla){
+        this.casillaActual = numCasilla;
+        this.puedeComprar = false;
         
+        Diario.getInstance().ocurreEvento("El jugador " + this.nombre + " se ha desplazado a la casilla " + this.casillaActual + " no puede comprarla");
+        
+        return true;
     }
     
     boolean paga(float cantidad){
-        
+        return this.modificarSaldo(cantidad * -1);
     }
     
     boolean pagaAlquiler(float cantidad){
-        
+        return this.paga(cantidad);
     }
     
     boolean pasaPorSalida(){
+        this.recibe(Jugador.PasoPorSalida);
         
+        Diario.getInstance().ocurreEvento("El jugador " + this.nombre + " ha pasado por SALIDA");
+        
+        return true;
     }
     
     boolean puedeComprarCasilla(){
+        this.puedeComprar = true;
         
+        return this.puedeComprar;
     }
     
     boolean recibe(float cantidad){
-        
+        return this.modificarSaldo(cantidad);
     }
     
     boolean tieneAlgoQueGestionar(){
-        
+        return this.propiedades.size() > 0;
     }
     
     //METODOS PUBLICOS
+    @Override
     public int compareTo(Jugador otro){
+        int compare = 0;
+        
+        if(this.saldo == otro.saldo){//No necesito getSaldo ya que son readers de la misma clase
+            compare = 1;
+        }else{
+            compare = 1;
+        }
+        
+        return compare;
+    }
+    
+    @Override
+    public String toString(){
         
     }
     

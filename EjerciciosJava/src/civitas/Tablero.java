@@ -16,7 +16,7 @@ public class Tablero {
     public Tablero(){
         casillas = new ArrayList<>();
         
-        casillas.add(new Casilla(TipoCasilla.CALLE, "Salida", 0f, 0f, 0f)); //Incluir la primera casilla de nombre Salida, los demas valores a 0 y de tipo calle por mientras
+        casillas.add(new Casilla("Salida")); //Incluir la primera casilla de nombre Salida, los demas valores a 0 y de tipo calle por mientras
         
         porSalida = false;
   
@@ -38,7 +38,9 @@ public class Tablero {
     //Metodos de instancia de paquete =? publicos
     
     //Solo lo devuelve y lo deja en false // Preguntar
-    boolean computarPasoPorSalida(){       
+    boolean computarPasoPorSalida(){ 
+        this.porSalida = false;
+        
         return this.porSalida;
     }
     
