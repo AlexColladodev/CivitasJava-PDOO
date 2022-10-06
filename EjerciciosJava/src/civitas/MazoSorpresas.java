@@ -36,8 +36,7 @@ public class MazoSorpresas {
 
     }
     
-    MazoSorpresas(){
-        
+    MazoSorpresas(){     
         this.init();
         
         debug = false;

@@ -20,8 +20,12 @@ public class Reserva {
         this.cliente = cliente;
         this.hotel = hotel;
         /*
-        this.hotel.addReserva(cliente, fechaEntrada, fechaSalida);
+        this.hotel.addReserva(cliente, fechaEntrada, fechaSalida); -->Hacerlo aqui de esta manera
         this.cliente.addReserva(this);*/
+        
+        /*
+        
+        */
         
     }
     

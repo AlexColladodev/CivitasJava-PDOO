@@ -9,6 +9,8 @@ public class Dado {
     
     //Atributo de Clase
     static final private Dado instance = new Dado();
+    static final private int VALORESDADO = 6;
+    static final private int VALORDEBUG = 1;
     
     //Atributos de Instancia
     private Random random = new Random();
@@ -28,9 +30,9 @@ public class Dado {
     int tirar(){
         
         if(!debug){
-            ultimoResultado = (random.nextInt(6)+1); // Posibles resultados entre 0 y 6 // Normalmente seria entre 0 y 5 pero con el +1 se cambia
+            ultimoResultado = (random.nextInt(VALORESDADO)+1); // Posibles resultados entre 0 y 6 // Normalmente seria entre 0 y 5 pero con el +1 se cambia
         }else{
-            ultimoResultado = 1;
+            ultimoResultado = VALORDEBUG;
         }
         
         return ultimoResultado;
