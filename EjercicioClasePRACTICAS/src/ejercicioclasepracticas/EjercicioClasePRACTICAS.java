@@ -181,6 +181,29 @@ public class EjercicioClasePRACTICAS {
         
         System.out.println("El precio total de la suma de las habitaciones respecto al precio medio por habitacion es de " + sumaPrecio);
         
+    
+    
+        hotel1.addHabitacion(5, 6);
+        hotel1.addHabitacion(15, 22);
+        hotel1.addHabitacion(23, 55);
+        
+        
+        System.out.println("Se busca habitacion para 5 personas // Es la hab numero: " + hotel1.buscarHabitacion(6));
+        System.out.println("Se busca habitacion para 15 personas // Es la hab numero: " + hotel1.buscarHabitacion(22));
+        
+        Empleado empleado1 = new Empleado("Manuelito Sanchez");
+        empleado1.addTrabajo(hotel1);
+        
+        Empleado empleado2 = new Empleado("Alex Croto");
+        empleado1.addTrabajo(hotel1);
+        
+        Empleado empleado3 = new Empleado("Benito Camelas");
+        empleado1.addTrabajo(hotel1);
+        
+        System.out.println("Factor del HOTEL 1 segun su estrellas. Estrellas: " + hotel1.getEstrellas() + " el factor es: " + Hotel.getFactor(hotel1.getEstrellas()));
+        
+        System.out.println("Coste por dia de hotel 1: " + hotel1.costePorDia());
+    
     }
     
 }
