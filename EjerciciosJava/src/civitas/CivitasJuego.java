@@ -36,8 +36,19 @@ public class CivitasJuego {
         
     }
     
+    //Casilla(String titulo, float precioCompra, float precioEdificar, float precioBaseAlquiler){
+        
     private void inicializaTablero(MazoSorpresas mazo){//Crear todas las casillas, las hago luego :D
-        this.tablero.aniadeCasilla(casilla);
+        this.tablero.aniadeCasilla(new Casilla("Multiplaza", 2588.4f, 2988.6f, 85.3f));
+        this.tablero.aniadeCasilla(new Casilla("AlbrookMall", 853.2f, 2541.7f, 99.3f));
+        this.tablero.aniadeCasilla(new Casilla("Altaplaza", 2488.4f, 4589.6f, 87.4f));
+        this.tablero.aniadeCasilla(new Casilla("SohoMall", 5263.4f, 4488.6f, 108.3f));
+        this.tablero.aniadeCasilla(new Casilla("MetroMall", 1544.4f, 3323.6f, 85.4f));
+        this.tablero.aniadeCasilla(new Casilla("WestLanMall", 888.0f, 1124.4f, 55.8f));
+        this.tablero.aniadeCasilla(new Casilla("NevadaShopping", 2010.9f, 1288.8f, 85.1f));
+        this.tablero.aniadeCasilla(new Casilla("CenterTravelMall", 574.1f, 1214.0f, 25.38f));
+        this.tablero.aniadeCasilla(new Casilla("ETSIIT", 333.7f, 1311.5f, 63.2f));
+        this.tablero.aniadeCasilla(new Casilla("ConventionCenter", 7463.4f, 1697.6f, 12.3f)); 
     }
     
     private void pasarTurno(){
