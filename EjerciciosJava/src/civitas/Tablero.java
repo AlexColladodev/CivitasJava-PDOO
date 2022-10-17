@@ -60,11 +60,17 @@ public class Tablero {
         casillas.add(casilla);
     }
     
-    Casilla getCasilla(int numCasilla){
+    public Casilla getCasilla(int numCasilla){
         
         return (correcto(numCasilla))?casillas.get(numCasilla):null;
         
     }
+
+    public ArrayList<Casilla> getCasillas() {
+        return casillas;
+    }
+    
+    
     
     int nuevaPosicion(int actual, int tirada){
         

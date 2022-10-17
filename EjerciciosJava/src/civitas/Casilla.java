@@ -201,4 +201,6 @@ public class Casilla {
         
         return esteEsElPropietario;
     }
+    
+    
 }

@@ -4,13 +4,10 @@
  */
 package civitas;
 
-/**
- *
- * @author alexc
- */
-public enum OperacionesJuego {
-    PASAR_TURNO,
-    AVANZAR,
-    COMPRAR,
-    GESTIONAR
+//@author SatoriAlex // Alexander Collado Rojas Y7412507N
+
+public enum OperacionInmobiliaria {
+    CONSTRUIR_CASA,
+    CONSTRUIR_HOTEL,
+    TERMINAR
 }
