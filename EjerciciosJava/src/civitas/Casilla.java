@@ -65,19 +65,41 @@ public class Casilla {
     }
     
     void recibeJugador(int iactual, ArrayList<Jugador> todos){
-        
+        switch(this.tipo){
+            case CALLE -> recibeJugador_calle(iactual, todos);
+            case SORPRESA -> recibeJugador_sorpresa(iactual, todos);
+            case DESCANSO -> informe(iactual, todos);
+        }
     }
     
     boolean comprar(Jugador jugador){
+        boolean result = false;
         
+        if(!this.tienePropietario()){
+           this.propietario = jugador;
+            this.propietario.paga(this.precioCompra); 
+            result = true;
+        }
+        return result;
     }
     
     boolean construirCasa(Jugador jugador){
+        boolean result = false;
         
+        if(esEsteElPropietario(jugador)){
+                jugador.paga(this.precioEdificar);
+                this.numCasas++;
+                result = true;
+        
+        }
+        
+        return result;
     }
     
     boolean construirHotel(Jugador jugador){
-        
+        jugador.paga(this.precioEdificar);
+        this.numHoteles++;
+        return true;
     }
     
     boolean derruirCasas(int numero, Jugador jugador){
@@ -113,11 +135,23 @@ public class Casilla {
     }   
     
     private void recibeJugador_calle(int iactual, ArrayList<Jugador> todos){
+        informe(iactual, todos);
         
+        Jugador jugador = todos.get(iactual);
+        
+        if(!this.tienePropietario()){
+            jugador.puedeComprarCasilla();
+        }else{
+            this.tramitarAlquiler(jugador);
+        }
     }
     
     private void recibeJugador_sorpresa(int iactual, ArrayList<Jugador> todos){
+        Sorpresa sorpresa = mazo.siguiente();
         
+        this.informe(iactual, todos);
+        
+        sorpresa.aplicarAJugador(iactual, todos);
     }
     //Metodos PUBLICOS
     //Formula indicada en las reglas del juego 

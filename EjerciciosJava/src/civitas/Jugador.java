@@ -69,11 +69,30 @@ public class Jugador implements Comparable<Jugador>{
     }
     
     private boolean puedoEdificarCasa(Casilla propiedad){ //Puedo edificar si tengo dinero para edificar y si no he llegado al numMaximo de casas
-        return (propiedad.getNumCasas() < Jugador.CasasMax && this.puedoGastar(propiedad.getPrecioEdificar()));
+        float precioEdificar = propiedad.getPrecioEdificar();
+        boolean puedoEdificar = false;
+        
+        if(this.puedoGastar(precioEdificar) && propiedad.getNumCasas() < Jugador.CasasMax){
+            puedoEdificar = true;
+        }
+        
+        return puedoEdificar;
     }
     
     private boolean puedoEdificarHotel(Casilla propiedad){ //Puedo edificar hotel si tengo las casas necesarias, no he llegado al maximo de hoteles y si tengo dinero
-        return (propiedad.getNumHoteles() < Jugador.HotelesMax && propiedad.getNumCasas() == Jugador.CasasPorHotel);
+        boolean puedoEdificarHotel = false;
+        float precio = propiedad.getPrecioEdificar();
+        
+        if(this.puedoGastar(precio)){
+            if(propiedad.getNumHoteles()< Jugador.HotelesMax){
+                //[propiedad.getNumCasas()>=getCasasPorHotel()]
+                if(propiedad.getNumCasas() >= Jugador.CasasPorHotel){
+                    puedoEdificarHotel = true;
+                }
+            }
+        }
+        
+        return puedoEdificarHotel;
     }
     
     private boolean puedoGastar(float precio){
@@ -85,7 +104,7 @@ public class Jugador implements Comparable<Jugador>{
         return this.nombre;
     }
     
-    protected ArrayList<Casilla> getPropiedades(){
+    public ArrayList<Casilla> getPropiedades(){
         return this.propiedades;
     }
     
@@ -95,19 +114,72 @@ public class Jugador implements Comparable<Jugador>{
     
     //Metodos PAQUETES
     int cantidadCasasHoteles(){
+        int suma = 0;
+        for(int i = 0; i < this.propiedades.size(); i++){
+            suma += this.propiedades.get(i).getNumCasas() + this.propiedades.get(i).getNumHoteles();
+        }
         
+        return suma;
     }
     
     boolean comprar(Casilla titulo){
         
+        boolean result = false;
+        
+        if(this.puedeComprar){
+            float precio = titulo.getPrecioCompra();
+            
+            if(this.puedoGastar(precio)){
+                result = titulo.comprar(this);
+                this.propiedades.add(titulo);
+                
+                Diario.getInstance().ocurreEvento("El jugador " + this.nombre + " compra la propeidad " + titulo.getNombre());
+                
+                this.puedeComprar = false;
+            }else{ 
+                Diario.getInstance().ocurreEvento("El jugador " + this.nombre + " no tiene saldo para comprar la propiedad " + titulo.getNombre());
+            } 
+        }
+        
+        return result;
     }
     
     boolean construirCasa(int ip){
+        boolean result = false;
+        boolean existe = this.existeLaPropiedad(ip);
+        boolean puedoEdificar = false;
         
+        if(existe){
+            Casilla propiedad = this.propiedades.get(ip);
+            puedoEdificar = this.puedoEdificarCasa(propiedad);
+            if(puedoEdificar){
+                result = propiedad.construirCasa(this);
+                
+                if(result){
+                   Diario.getInstance().ocurreEvento("El jugador " + this.nombre + " ha construido una casa en la propiedad " + ip);
+                }
+            }
+        }
+        
+        return result;
     }
     
     boolean construirHotel(int ip){
+        boolean result = false;
         
+        if(this.existeLaPropiedad(ip)){
+            Casilla propiedad = this.propiedades.get(ip);
+            
+            boolean puedoEdificarHotel = this.puedoEdificarHotel(propiedad);
+            
+            if(puedoEdificarHotel){
+                result = propiedad.construirHotel(this);
+                propiedad.derruirCasas(Jugador.CasasPorHotel, this);
+                Diario.getInstance().ocurreEvento("El jugador " + this.nombre + " construye hotel en la propiedad " + ip);
+            }
+        }
+        
+        return result;
     }
     
     boolean enBancarrota(){

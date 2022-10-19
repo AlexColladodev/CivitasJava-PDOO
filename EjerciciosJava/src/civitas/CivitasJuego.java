@@ -23,6 +23,20 @@ public class CivitasJuego {
     
     //Metodos PRIVADOS
     private void avanzaJugador(){
+        Jugador jugadorActual = this.getJugadorActual();
+        int posicionActual = jugadorActual.getCasillaActual();
+        
+        int tirada = Dado.getInstance().tirar();
+        
+        int posicionNueva = tablero.nuevaPosicion(posicionActual, tirada);
+        
+        Casilla casilla = tablero.getCasilla(posicionNueva);
+        
+        this.contabilizarPasosPorSalida();
+        
+        jugadorActual.moverACasilla(posicionNueva);
+        
+        casilla.recibeJugador(this.indiceJugadorActual, jugadores);
         
     }
     
@@ -104,7 +118,14 @@ public class CivitasJuego {
     }
     
     public boolean comprar(){
+        Jugador jugadorActual = this.getJugadorActual();
         
+        int numCasillaActual = jugadorActual.getCasillaActual();
+        Casilla casilla = this.tablero.getCasilla(numCasillaActual);
+        
+        boolean res = jugadorActual.comprar(casilla);
+        
+        return res;
     }
     
     public boolean construirCasa(int ip){
@@ -154,7 +175,23 @@ public class CivitasJuego {
     }
     
     public OperacionJuego siguientePaso(){
+        Jugador jugadorActual = this.getJugadorActual();
         
+        OperacionJuego operacion = this.gestorEstados.siguienteOperacion(jugadorActual, this.estado);
+        
+        if(operacion == OperacionJuego.PASAR_TURNO){
+            
+            this.pasarTurno();
+            this.siguientePasoCompletado(operacion);
+            
+        }else if(operacion == OperacionJuego.PASAR_TURNO){
+            
+            this.avanzaJugador();
+            this.siguientePasoCompletado(operacion);
+   
+        }
+        
+        return operacion;
     }
     
     public void siguientePasoCompletado(OperacionJuego operacion){

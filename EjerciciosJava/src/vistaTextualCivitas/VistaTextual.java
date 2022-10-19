@@ -99,8 +99,17 @@ public class VistaTextual implements Vista {
       return (OperacionInmobiliaria.values()[opcion]);      
   }
 
-  public int elegirPropiedad(){
-      return 0;
+  public int elegirPropiedad(){//Usando el indexOf de las propiedades de un jugador respecto con la casilla en la que esta ahorita
+      
+      ArrayList<String> propiedades = new ArrayList<>();
+      
+      for(int i = 0; i < this.juegoModel.getJugadorActual().getPropiedades().size(); i++){
+          propiedades.add(this.juegoModel.getJugadorActual().getPropiedades().get(i).getNombre());
+      }
+      
+      int propiedadElegida = menu("Indice de la propiedad sobre la cual se desea realizar gestiones: ", propiedades);
+      
+      return propiedadElegida;
   }
 
   //Muestra en consola el valor del argumento pasado
