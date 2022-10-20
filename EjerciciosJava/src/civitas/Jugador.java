@@ -263,7 +263,7 @@ public class Jugador implements Comparable<Jugador>{
     public String toString(){
         String informacion = "";
         
-        informacion = "Nombre del Jugador: " + this.getNombre() + "\n";
+        informacion = "\nNombre del Jugador: " + this.getNombre() + "\n";
         
         informacion += "El saldo del jugador es: " + this.getSaldo() + "\n" 
                         + "Tiene las siguientes propiedades: " + "\n";

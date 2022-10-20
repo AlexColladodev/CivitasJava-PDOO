@@ -96,7 +96,7 @@ public class CivitasJuego {
         
         int numJugadores = nombres.size();
         
-        if(numJugadores < 4){//Solo si hay menos de 4 jugadores
+        if(numJugadores <= 4){//Solo si hay menos de 4 jugadores
             for(int i = 0; i < numJugadores; i++){
                 jugadores.add(new Jugador(nombres.get(i)));
             }  
@@ -158,7 +158,7 @@ public class CivitasJuego {
     }
     
     public Jugador getJugadorActual(){
-        return this.jugadores.get(indiceJugadorActual);
+        return (this.jugadores.get(this.indiceJugadorActual));
     }
     
     public ArrayList<Jugador> getJugadores(){
@@ -184,7 +184,7 @@ public class CivitasJuego {
             this.pasarTurno();
             this.siguientePasoCompletado(operacion);
             
-        }else if(operacion == OperacionJuego.PASAR_TURNO){
+        }else if(operacion == OperacionJuego.AVANZAR){
             
             this.avanzaJugador();
             this.siguientePasoCompletado(operacion);

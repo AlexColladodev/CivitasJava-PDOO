@@ -194,16 +194,16 @@ public class Casilla {
     public String toString(){
         String cadena;
         
-        cadena = "Tipo de Casilla: " + this.tipo + 
-                    " Nombre de Casilla: " + this.nombre + 
-                    " Precio Compra: " + this.precioCompra +
-                    " Precio Edificar: " + this.precioEdificar +
-                    " Precio Base Alquiler: " + this.precioBaseAlquiler +
-                    " Numero de Casas: " + this.numCasas + 
-                    " Numero de Hoteles: " + this.numHoteles;
+        cadena = "\nTipo de Casilla: " + this.tipo + 
+                    "\n Nombre de Casilla: " + this.nombre + 
+                    "\n Precio Compra: " + this.precioCompra +
+                    "\n Precio Edificar: " + this.precioEdificar +
+                    "\n Precio Base Alquiler: " + this.precioBaseAlquiler +
+                    "\n Numero de Casas: " + this.numCasas + 
+                    "\n Numero de Hoteles: " + this.numHoteles;
         
         if(tienePropietario()){
-            cadena = cadena + "La casilla tiene propietario: " + propietario.getNombre();
+            cadena = cadena + "\nLa casilla tiene propietario: \n" + propietario.getNombre();
         }
         
         return cadena;
