@@ -8,9 +8,9 @@ module Modelo_laberinto
 
 class Habitacion
   
-  attr_reader :num_habitacion
+  attr_reader :num_habitacion, :activa_trampa
 
-  @@ACTIVARLA = 80
+  @@ACTIVARLA = 60
 
   def initialize (num_habitacion)
     @num_habitacion=num_habitacion
@@ -23,6 +23,8 @@ class Habitacion
     if(@activa_trampa >= @@ACTIVARLA)
       trampa = true
     end
+
+    return trampa
   end
 
   def set_lado(direccion, separador)
@@ -46,6 +48,7 @@ class Habitacion
     p=p+"Sur "+@lados[Direccion::SUR].to_s+"\n"
     p=p+"Este: "+@lados[Direccion::ESTE].to_s+"\n"
     p=p+"Oeste: "+@lados[Direccion::OESTE].to_s+"\n"
+    p=p+ "Posibilidades de trampa = " + @activa_trampa
   end
   
 end

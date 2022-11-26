@@ -83,9 +83,3 @@ class Laberinto
 
 end
 
-def prueba
-  lab=Laberinto.new()
-  puts lab
-end
-
-prueba

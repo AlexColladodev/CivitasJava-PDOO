@@ -6,15 +6,15 @@ package civitas;
 import java.util.ArrayList;
 
 
-public class Sorpresa {
+public abstract class Sorpresa {
     
     //Atributos de Instancia
     private String texto;
     private int valor;
     private MazoSorpresas mazo;
-    private TipoSorpresa tipo;
     
     //Metodos Privados
+   /*
     private void aplicarAJugador_pagarCobrar(int actual, ArrayList<Jugador> todos){
         this.informe(actual, todos);
         
@@ -26,28 +26,28 @@ public class Sorpresa {
         
         todos.get(actual).modificarSaldo(this.valor * todos.get(actual).cantidadCasasHoteles());
     }
+    */
     
-    private void informe(int actual, ArrayList<Jugador> todos){
+    void informe(int actual, ArrayList<Jugador> todos){
         Diario.getInstance().ocurreEvento("Se le ha aplicado al jugador" + todos.get(actual) + " la sorpresa " + this.toString());
     }
     
     //Metodos de PAQUETE
-    Sorpresa(TipoSorpresa tipo, String texto, int valor){
+    Sorpresa(String texto, int valor){
         this.texto = texto;
-        this.tipo = tipo;
         this.valor = valor;
         
         this.mazo = null;
     }
     
-    void aplicarAJugador(int actual, ArrayList<Jugador> todos){
-        switch(this.tipo){
-            case PORCASAHOTEL: aplicarAJugador_porCasaHotel(actual, todos); break;
-            case PAGARCOBRAR: aplicarAJugador_pagarCobrar(actual, todos); break;
-        }
+    abstract void aplicarAJugador(int actual, ArrayList<Jugador> todos);
+    
+    int getValor(){
+        return this.valor;
     }
     
     //Metodo PUBLICO
+    @Override
     public String toString(){
         return this.texto;
     }

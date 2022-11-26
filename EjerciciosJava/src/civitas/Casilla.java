@@ -19,18 +19,15 @@ import java.util.ArrayList;
 public class Casilla {
     
     //Atributos de clases -- llevan static
+    /*
     private static final float FACTORALQUILERCALLE = 1.0f;
     private static final float FACTORALQUILERCASA = 1.0f;
     private static final float FACTORALQUILERHOTEL = 4.0f;
+    */
     
     //Atributos de instancia
     private TipoCasilla tipo;
     private String nombre;
-    private float precioCompra, precioEdificar, precioBaseAlquiler;
-    private int numCasas, numHoteles;
-    private MazoSorpresas mazo; //CASILLAS TIPO SORPRESA
-    private Sorpresa sorpresa;
-    private Jugador propietario;
     
     //Metodos de PAQUETE
     
@@ -38,13 +35,14 @@ public class Casilla {
     
     //PARA CASILLAS TIPO DESCANSO
     Casilla(String nombre){
-        this.init();
+        //this.init();
         
         this.tipo = TipoCasilla.DESCANSO;
         this.nombre = nombre;
     }
     
     //PARA CASILLAS TIPO CALLE
+    /*
     Casilla(String titulo, float precioCompra, float precioEdificar, float precioBaseAlquiler){
         this.init();
         
@@ -53,25 +51,31 @@ public class Casilla {
         this.precioBaseAlquiler = precioBaseAlquiler;
         this.precioEdificar = precioEdificar;
         this.precioCompra = precioCompra;
-    }
+    }*/
     
     //PARA CASILLAS TIPO SORPRESAS
+    /*
     Casilla(String nombre, MazoSorpresas mazo){
-        this.init();
+        //this.init();
         
         this.tipo = TipoCasilla.SORPRESA;
         this.nombre = nombre;
         this.mazo = mazo;
-    }
+    }*/
     
     void recibeJugador(int iactual, ArrayList<Jugador> todos){
+        
+        informe(iactual, todos);
+        
+        /*
         switch(this.tipo){
-            case CALLE -> recibeJugador_calle(iactual, todos);
-            case SORPRESA -> recibeJugador_sorpresa(iactual, todos);
-            case DESCANSO -> informe(iactual, todos);
-        }
+            case CALLE: recibeJugador_calle(iactual, todos); break;
+            case SORPRESA: recibeJugador_sorpresa(iactual, todos); break;
+            case DESCANSO: informe(iactual, todos); break;
+        }*/
     }
     
+    /*
     boolean comprar(Jugador jugador){
         boolean result = false;
         
@@ -112,6 +116,14 @@ public class Casilla {
         }
         
         return realizado;
+    }*/
+    
+    void setTipo(TipoCasilla tipo){
+        this.tipo = tipo;
+    }
+    
+    TipoCasilla getTipo(){
+        return this.tipo;
     }
     
     void informe(int iactual, ArrayList<Jugador> todos){//Informa sobre que jugador ha caido en que casilla
@@ -119,6 +131,7 @@ public class Casilla {
     }
     
     //Metodos PRIVAOS
+    /*
     private void init(){
         this.tipo = null;
         this.mazo = null;
@@ -132,8 +145,8 @@ public class Casilla {
         
         this.numCasas = 0;
         this.numHoteles = 0;
-    }   
-    
+    }  */ 
+    /*
     private void recibeJugador_calle(int iactual, ArrayList<Jugador> todos){
         informe(iactual, todos);
         
@@ -144,26 +157,43 @@ public class Casilla {
         }else{
             this.tramitarAlquiler(jugador);
         }
-    }
-    
+    }*/
+    /*
     private void recibeJugador_sorpresa(int iactual, ArrayList<Jugador> todos){
         Sorpresa sorpresa = mazo.siguiente();
         
         this.informe(iactual, todos);
         
         sorpresa.aplicarAJugador(iactual, todos);
-    }
+    }*/
+    
+    
     //Metodos PUBLICOS
     //Formula indicada en las reglas del juego 
+    /*
     public float getPrecioAlquilerCompleto(){
         return (precioBaseAlquiler * ( FACTORALQUILERCALLE + numCasas * FACTORALQUILERCASA + numHoteles * FACTORALQUILERHOTEL));
-    }
+    }*/
     
     //Getters
+    //Este se queda aqui para poder ser usado por todos los hijos
     public String getNombre(){
         return this.nombre;
     }
     
+    @Override
+    public String toString(){
+        String cadena;
+        
+        cadena = "CASILLA DE DESCANSO";
+       
+        
+        return cadena;
+        
+    }
+    
+    
+    /*
     public float getPrecioCompra(){
         return this.precioCompra;
     }
@@ -186,10 +216,11 @@ public class Casilla {
     
     public int getNumHoteles(){
         return this.numHoteles;
-    }
+    }*/
     
     
     //Metodo para devolver mediante una cadena el estado de un objeto
+    /*
     @Override
     public String toString(){
         String cadena;
@@ -208,8 +239,9 @@ public class Casilla {
         
         return cadena;
         
-    }
+    }*/
     
+    /*
     public void tramitarAlquiler(Jugador jugador){
         if(tienePropietario() && esEsteElPropietario(jugador)){
             jugador.pagaAlquiler(this.getPrecioAlquilerCompleto());
@@ -234,7 +266,7 @@ public class Casilla {
         }
         
         return esteEsElPropietario;
-    }
+    }*/
     
     
 }
