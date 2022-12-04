@@ -10,15 +10,16 @@ import vistaTextualCivitas.VistaTextual;
 import civitas.OperacionJuego;
 import civitas.OperacionInmobiliaria;
 import civitas.GestionInmobiliaria;
+import GUI.*;
 
 //@author SatoriAlex // Alexander Collado Rojas Y7412507N
 
 public class Controlador {
     private CivitasJuego juegoModel;
-    private VistaTextual vista;
+    private CivitasView vista;
     
     
-    public Controlador(CivitasJuego juego, VistaTextual vista){
+    public Controlador(CivitasJuego juego, CivitasView vista){
         this.juegoModel = juego;
         this.vista = vista;
     }

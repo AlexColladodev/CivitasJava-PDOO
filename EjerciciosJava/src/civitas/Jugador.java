@@ -26,6 +26,7 @@ public class Jugador implements Comparable<Jugador>{
     private boolean puedeComprar;
     private float saldo;
     private ArrayList<CasillaCalle> propiedades;
+    private boolean especulador = false;
     
     //Constructores
     Jugador(String nombre){
@@ -100,12 +101,24 @@ public class Jugador implements Comparable<Jugador>{
     }
     
     public JugadorEspeculador convertirJugador(){
+        this.especulador = true;
         return new JugadorEspeculador(this);
     }
     
+    public String getEspeculador(){
+        String info = "" + this.especulador;
+        return info;
+    }
+    
     //Metodos PROTECTED --> CAMBIADOS PARA PRACTICA 3
-    protected String getNombre(){
+    public String getNombre(){
         return this.nombre;
+    }
+    
+    public String getSaldoTexto(){
+        String info;
+        info = "" + this.getSaldo();
+        return info;
     }
     
     public ArrayList<CasillaCalle> getPropiedades(){

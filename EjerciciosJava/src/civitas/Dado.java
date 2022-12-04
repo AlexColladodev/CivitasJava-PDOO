@@ -16,6 +16,10 @@ public class Dado {
     private Random random = new Random();
     private int ultimoResultado;
     private boolean debug;
+
+    public boolean isDebug() {
+        return debug;
+    }
     
     private Dado(){ 
         debug = false;
@@ -27,7 +31,7 @@ public class Dado {
     }
     
     
-    int tirar(){
+    public int tirar(){
         
         if(!debug){
             ultimoResultado = (random.nextInt(VALORESDADO)+1); // Posibles resultados entre 0 y 6 // Normalmente seria entre 0 y 5 pero con el +1 se cambia
@@ -57,7 +61,7 @@ public class Dado {
         Diario.getInstance().ocurreEvento(evento);
     }
     
-    int getUltimoResultado(){
+    public int getUltimoResultado(){
         return this.ultimoResultado;
     }
     
