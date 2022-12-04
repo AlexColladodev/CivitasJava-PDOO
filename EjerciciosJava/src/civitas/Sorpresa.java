@@ -40,6 +40,13 @@ public abstract class Sorpresa {
         this.mazo = null;
     }
     
+    Sorpresa(String texto){
+        this.texto = texto;
+        this.valor = -1;
+        
+        this.mazo = null;
+    }
+    
     abstract void aplicarAJugador(int actual, ArrayList<Jugador> todos);
     
     int getValor(){

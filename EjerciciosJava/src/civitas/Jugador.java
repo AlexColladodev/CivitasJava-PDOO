@@ -95,8 +95,12 @@ public class Jugador implements Comparable<Jugador>{
         return puedoEdificarHotel;
     }
     
-    private boolean puedoGastar(float precio){
+    boolean puedoGastar(float precio){
         return this.saldo >= precio;
+    }
+    
+    public JugadorEspeculador convertirJugador(){
+        return new JugadorEspeculador(this);
     }
     
     //Metodos PROTECTED --> CAMBIADOS PARA PRACTICA 3

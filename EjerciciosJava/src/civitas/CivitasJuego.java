@@ -51,6 +51,7 @@ public class CivitasJuego {
         this.mazo.alMazo(new SorpresaPagarCobrar("Pagar 25", -25));
         this.mazo.alMazo(new SorpresaPagarCobrar("Cobrar 50", 50));
         this.mazo.alMazo(new SorpresaPagarCobrar("Pagar 50", -50));
+        this.mazo.alMazo(new SorpresaConvertirme("Convertido en Jugador Especulador"));
         this.mazo.alMazo(new SorpresaPorCasaHotel("Pagar 25 por cada casa u hotel", 25));
         this.mazo.alMazo(new SorpresaPorCasaHotel("Pagar 25 por cada casa u hotel", 25));
         this.mazo.alMazo(new SorpresaPorCasaHotel("Pagar 150 por cada casa u hotel", 150));
@@ -94,6 +95,7 @@ public class CivitasJuego {
     public CivitasJuego(ArrayList<String> nombres, boolean debug){
         this.jugadores = new ArrayList<>();
         
+        
         int numJugadores = nombres.size();
         
         if(numJugadores <= 4){//Solo si hay menos de 4 jugadores
@@ -114,6 +116,7 @@ public class CivitasJuego {
         this.tablero = new Tablero();
         this.inicializaTablero(this.mazo);
         this.inicializaMazoSorpresas();
+       
         
     }
     

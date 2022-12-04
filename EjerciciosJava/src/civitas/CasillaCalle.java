@@ -162,6 +162,10 @@ public class CasillaCalle extends Casilla{
         return tienePropietario;
     }
     
+    public void actualizaPropietarioPorConversion(Jugador nuevoPropietario){
+        this.propietario = nuevoPropietario;
+    }
+    
     public boolean esEsteElPropietario(Jugador jugador){
         boolean esteEsElPropietario = false;
         

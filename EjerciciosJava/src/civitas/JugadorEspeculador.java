@@ -12,11 +12,16 @@ public class JugadorEspeculador extends Jugador {
     
     private static int FACTORESPECULADOR = 2;
     
-    protected JugadorEspeculador(String nombre){
-        super(nombre);
+    //Llama al constructor de copia para convertir un jugador como Especulador
+    protected JugadorEspeculador(Jugador otro){
+        super(otro);
         
-        for(int i = 0 ; i < super.getPropiedades().size(); i++){
-            
+        this.actualizaPropiedadesPorConversion(otro);
+    }
+    
+    private void actualizaPropiedadesPorConversion(Jugador antiguoPropietario){
+        for(int i = 0; i < antiguoPropietario.getPropiedades().size(); i++){
+            antiguoPropietario.getPropiedades().get(i).actualizaPropietarioPorConversion(this);
         }
     }
     
@@ -30,8 +35,15 @@ public class JugadorEspeculador extends Jugador {
         return (super.getCasasMax() * FACTORESPECULADOR);
     }
     
+    @Override
+    boolean paga(float cantidad){
+        return super.modificarSaldo(cantidad / FACTORESPECULADOR);
+    }
     
-    
+    @Override
+    boolean puedoGastar(float cantidad){
+        return super.puedoGastar(cantidad / FACTORESPECULADOR);
+    }
     
     /*
     @Override
