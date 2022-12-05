@@ -4,7 +4,9 @@
  */
 package GUI;
 
+import civitas.CasillaCalle;
 import civitas.Jugador;
+import java.util.ArrayList;
 
 public class JugadorPanel extends javax.swing.JPanel {
 
@@ -21,11 +23,35 @@ public class JugadorPanel extends javax.swing.JPanel {
         this.nombreTextField.setText(this.jugador.getNombre());
         this.saldoTextField.setText(this.jugador.getSaldoTexto());
         
+        //Punto 4 del punto 4
+        this.rellenaPropiedades(this.jugador.getPropiedades());
+        
         //Verificar si debo poner algun if necesario aqui
         this.repaint();
         this.revalidate();
     }
     
+    private void rellenaPropiedades(ArrayList<CasillaCalle> lista){
+        //Se elimina info antigua
+        this.panelPropiedades.removeAll();
+        
+        //Se recorre la lista de propeidades para ir creando cada una de sus vistas
+        for(CasillaCalle t: lista){
+            PropiedadPanel vistaPropiedad = new PropiedadPanel();
+            vistaPropiedad.setPropiedad(t);
+            
+            this.panelPropiedades.add(vistaPropiedad);
+            vistaPropiedad.setVisible(true);
+        }
+        
+        //Se fuerza a la actualizacion visual del panel propiedades del panel jugador
+        this.repaint();
+        this.revalidate();
+    }
+    
+    /**
+     * Creates new form JugadorPanel
+     */
     public JugadorPanel() {
         initComponents();
     }
@@ -39,50 +65,92 @@ public class JugadorPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         nombreLabel = new javax.swing.JLabel();
-        nombreTextField = new javax.swing.JTextField();
         saldoLabel = new javax.swing.JLabel();
-        saldoTextField = new javax.swing.JTextField();
         especuladorLabel = new javax.swing.JLabel();
+        nombreTextField = new javax.swing.JTextField();
+        saldoTextField = new javax.swing.JTextField();
         especuladorTextField = new javax.swing.JTextField();
+        panelPropiedades = new javax.swing.JPanel();
+
+        jLabel1.setText("JUGADOR");
 
         nombreLabel.setText("Nombre:");
-        add(nombreLabel);
+
+        saldoLabel.setText("Saldo:");
+
+        especuladorLabel.setText("Especulador:");
 
         nombreTextField.setEditable(false);
         nombreTextField.setText("jTextField1");
-        nombreTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreTextFieldActionPerformed(evt);
-            }
-        });
-        add(nombreTextField);
-
-        saldoLabel.setText("Saldo:");
-        add(saldoLabel);
 
         saldoTextField.setEditable(false);
         saldoTextField.setText("jTextField2");
-        add(saldoTextField);
-
-        especuladorLabel.setText("Especulador:");
-        add(especuladorLabel);
 
         especuladorTextField.setEditable(false);
         especuladorTextField.setText("jTextField3");
-        add(especuladorTextField);
-    }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreTextFieldActionPerformed
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(especuladorLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(especuladorTextField))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreLabel)
+                            .addComponent(saldoLabel))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nombreTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                            .addComponent(saldoTextField))))
+                .addGap(28, 28, 28)
+                .addComponent(panelPropiedades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelPropiedades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nombreLabel)
+                            .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(saldoLabel)
+                            .addComponent(saldoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(especuladorLabel)
+                            .addComponent(especuladorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 5, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+    }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel especuladorLabel;
     private javax.swing.JTextField especuladorTextField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JTextField nombreTextField;
+    private javax.swing.JPanel panelPropiedades;
     private javax.swing.JLabel saldoLabel;
     private javax.swing.JTextField saldoTextField;
     // End of variables declaration//GEN-END:variables
