@@ -9,15 +9,14 @@ import java.util.Random;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.Timer;
-import civitas.Dado;
 
 /**
  *
  * @author fvelasco
  */
-public class vistaDado extends JDialog {
+public class Dado extends JDialog {
   
-  private static vistaDado instance = null;
+  private static Dado instance = null;
   private Random random; 
   private Timer timerDado;
 
@@ -27,7 +26,7 @@ public class vistaDado extends JDialog {
   private Boolean debug;
 
     
-  private vistaDado (JFrame parent) {
+  private Dado (JFrame parent) {
     super(parent, true);
     
     initComponents();
@@ -46,10 +45,10 @@ public class vistaDado extends JDialog {
 
   public static void createInstance (JFrame parent) {
     if (instance == null)
-      instance = new vistaDado (parent);
+      instance = new Dado (parent);
   }
   
-  public static vistaDado getInstance() {
+  public static Dado getInstance() {
       return instance;
   }
   

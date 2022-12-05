@@ -102,14 +102,22 @@ public class CasillaCalle extends Casilla{
         return (precioBaseAlquiler * ( FACTORALQUILERCALLE + numCasas * FACTORALQUILERCASA + numHoteles * FACTORALQUILERHOTEL));
     }
     
+    @Override
+    public Jugador getPropietario(){
+        return this.propietario;
+    }
+    
+    @Override
     public float getPrecioCompra(){
         return this.precioCompra;
     }
     
+    @Override
     public float getPrecioEdificar(){
         return this.precioEdificar;
     }
     
+    @Override
     public float getPrecioBaseAlquiler(){
         return this.precioBaseAlquiler;
     }
@@ -118,10 +126,12 @@ public class CasillaCalle extends Casilla{
         return numCasas + numHoteles;
     }
     
+    @Override
     public int getNumCasas(){
         return this.numCasas;
     }
     
+    @Override
     public int getNumHoteles(){
         return this.numHoteles;
     }
@@ -130,17 +140,7 @@ public class CasillaCalle extends Casilla{
     public String toString(){
         String cadena;
         
-        cadena = "\nTipo de Casilla: " + this.getTipo() + 
-                    "\n Nombre de Casilla: " + this.getNombre() + 
-                    "\n Precio Compra: " + this.precioCompra +
-                    "\n Precio Edificar: " + this.precioEdificar +
-                    "\n Precio Base Alquiler: " + this.precioBaseAlquiler +
-                    "\n Numero de Casas: " + this.numCasas + 
-                    "\n Numero de Hoteles: " + this.numHoteles;
-        
-        if(tienePropietario()){
-            cadena = cadena + "\nLa casilla tiene propietario: \n" + propietario.getNombre();
-        }
+        cadena = this.getNombre();  
         
         return cadena;
         

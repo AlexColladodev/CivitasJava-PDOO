@@ -9,23 +9,27 @@ import java.util.ArrayList;
 import vistaTextualCivitas.VistaTextual;
 import GUI.*;
 
+import GUI.*;
 
 public class TestP5 {
-    public static void main(String[] args){
-        
+
+    public static void main(String[] args) {
+
         CivitasView vistaGUI = new CivitasView();
         CapturaNombres captura = new CapturaNombres(vistaGUI, true);
+
+        Dado.createInstance(vistaGUI);
+        Dado.getInstance().setDebug(false);
         
         ArrayList<String> nombres = new ArrayList<String>();
         nombres = captura.getNombres();
-        
+
         CivitasJuego juegoModel = new CivitasJuego(nombres, false);
         Controlador controlador = new Controlador(juegoModel, vistaGUI);
         
         vistaGUI.setJuego(juegoModel);
-        
+
         controlador.juega();
-        
-        
-    }    
+
+    }
 }

@@ -63,19 +63,19 @@ public class CivitasJuego {
         
     private void inicializaTablero(MazoSorpresas mazo){//Crear todas las casillas, las hago luego :D
         this.tablero.aniadeCasilla(new CasillaCalle("Multiplaza", 2588.4f, 2988.6f, 85.3f));
-        this.tablero.aniadeCasilla(new CasillaSorpresa("Se vienen cositas SORPRESA", mazo));
+        this.tablero.aniadeCasilla(new CasillaSorpresa("SORPRESA", mazo));
         this.tablero.aniadeCasilla(new CasillaCalle("AlbrookMall", 853.2f, 2541.7f, 99.3f));
         this.tablero.aniadeCasilla(new CasillaCalle("Altaplaza", 2488.4f, 4589.6f, 87.4f));
-        this.tablero.aniadeCasilla(new CasillaSorpresa("Se vienen cositas SORPRESA", mazo));
+        this.tablero.aniadeCasilla(new CasillaSorpresa("SORPRESA", mazo));
         this.tablero.aniadeCasilla(new CasillaCalle("SohoMall", 5263.4f, 4488.6f, 108.3f));
-        this.tablero.aniadeCasilla(new CasillaSorpresa("Se vienen cositas SORPRESA", mazo));
+        this.tablero.aniadeCasilla(new CasillaSorpresa("SORPRESA", mazo));
         this.tablero.aniadeCasilla(new CasillaCalle("MetroMall", 1544.4f, 3323.6f, 85.4f));
         this.tablero.aniadeCasilla(new CasillaCalle("WestLanMall", 888.0f, 1124.4f, 55.8f));
         this.tablero.aniadeCasilla(new CasillaCalle("NevadaShopping", 2010.9f, 1288.8f, 85.1f));
-        this.tablero.aniadeCasilla(new CasillaSorpresa("Se vienen cositas SORPRESA", mazo));
+        this.tablero.aniadeCasilla(new CasillaSorpresa("SORPRESA", mazo));
         this.tablero.aniadeCasilla(new CasillaCalle("CenterTravelMall", 574.1f, 1214.0f, 25.38f));
         this.tablero.aniadeCasilla(new CasillaCalle("ETSIIT", 333.7f, 1311.5f, 63.2f));
-        this.tablero.aniadeCasilla(new CasillaSorpresa("Se vienen cositas SORPRESA", mazo));
+        this.tablero.aniadeCasilla(new CasillaSorpresa("SORPRESA", mazo));
         this.tablero.aniadeCasilla(new CasillaCalle("ConventionCenter", 7463.4f, 1697.6f, 12.3f)); 
     }
     
@@ -85,7 +85,7 @@ public class CivitasJuego {
         this.indiceJugadorActual = this.indiceJugadorActual % jugadores.size();
     }
     
-    private ArrayList<Jugador> ranking(){
+    public ArrayList<Jugador> ranking(){
         Collections.sort(this.jugadores);
         
         return this.jugadores;

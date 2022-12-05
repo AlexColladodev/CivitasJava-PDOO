@@ -41,6 +41,31 @@ public class Casilla {
         this.nombre = nombre;
     }
     
+    public Jugador getPropietario(){
+        return null;
+    }
+    
+    public float getPrecioCompra(){
+        return 0.0f;
+    }
+    
+    public int getNumCasas(){
+        return 0;
+    }
+    
+    public int getNumHoteles(){
+        return 0;
+    }
+    
+    public float getPrecioBaseAlquiler(){
+        return 0.0f;
+    }
+    
+    public float getPrecioEdificar(){
+        return 0.0f;
+    }
+    
+    
     //PARA CASILLAS TIPO CALLE
     /*
     Casilla(String titulo, float precioCompra, float precioEdificar, float precioBaseAlquiler){

@@ -4,7 +4,7 @@
  */
 
 //@author SatoriAlex // Alexander Collado Rojas Y7412507N
-
+/*
 import civitas.CivitasJuego;
 import controladorCivitas.Controlador;
 import java.util.ArrayList;
@@ -27,4 +27,4 @@ public class JuegoTexto {
         controlador.juega();
         
     }
-}
+}*/

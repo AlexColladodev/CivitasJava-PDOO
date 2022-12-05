@@ -28,6 +28,8 @@ public class Controlador {
         OperacionJuego siguiente;
         Respuesta respuesta;
         OperacionInmobiliaria operacion;
+        
+        
         int iPropiedad;
         
         while(!this.juegoModel.finalDelJuego()){
@@ -37,6 +39,7 @@ public class Controlador {
             this.vista.pausa();
             
             siguiente = this.juegoModel.siguientePaso();
+            
             this.vista.mostrarSiguienteOperacion(siguiente);
             
             if(siguiente != OperacionJuego.PASAR_TURNO){
