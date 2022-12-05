@@ -44,6 +44,7 @@ public class Jugador implements Comparable<Jugador>{
         this.propiedades = otro.propiedades;
         this.puedeComprar = otro.puedeComprar;
         this.saldo = otro.saldo;
+        this.especulador = true;
     }
     
     //METODOS PRIVADOS
@@ -69,7 +70,7 @@ public class Jugador implements Comparable<Jugador>{
         return Jugador.PasoPorSalida;
     }
     
-    private boolean puedoEdificarCasa(CasillaCalle propiedad){ //Puedo edificar si tengo dinero para edificar y si no he llegado al numMaximo de casas
+    boolean puedoEdificarCasa(CasillaCalle propiedad){ //Puedo edificar si tengo dinero para edificar y si no he llegado al numMaximo de casas
         float precioEdificar = propiedad.getPrecioEdificar();
         boolean puedoEdificar = false;
         
@@ -80,7 +81,7 @@ public class Jugador implements Comparable<Jugador>{
         return puedoEdificar;
     }
     
-    private boolean puedoEdificarHotel(CasillaCalle propiedad){ //Puedo edificar hotel si tengo las casas necesarias, no he llegado al maximo de hoteles y si tengo dinero
+    boolean puedoEdificarHotel(CasillaCalle propiedad){ //Puedo edificar hotel si tengo las casas necesarias, no he llegado al maximo de hoteles y si tengo dinero
         boolean puedoEdificarHotel = false;
         float precio = propiedad.getPrecioEdificar();
         
@@ -99,12 +100,7 @@ public class Jugador implements Comparable<Jugador>{
     boolean puedoGastar(float precio){
         return this.saldo >= precio;
     }
-    
-    public JugadorEspeculador convertirJugador(){
-        this.especulador = true;
-        return new JugadorEspeculador(this);
-    }
-    
+   
     public String getEspeculador(){
         String info = "" + this.especulador;
         return info;

@@ -11,6 +11,7 @@ import controladorCivitas.Respuesta;
 import javax.swing.JOptionPane;
 import GUI.*;
 import civitas.Diario;
+import javax.swing.JFrame;
 
 /**
  *
@@ -21,7 +22,9 @@ public class CivitasView extends javax.swing.JFrame implements Vista{
     private CivitasJuego juego;
                         
     public CivitasView() {
-        initComponents();
+        initComponents();    
+        
+        setLocationRelativeTo(null);
     }
 
     public void setJuego(CivitasJuego juego) {

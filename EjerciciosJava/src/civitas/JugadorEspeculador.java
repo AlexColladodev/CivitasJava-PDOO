@@ -45,6 +45,35 @@ public class JugadorEspeculador extends Jugador {
         return super.puedoGastar(cantidad / FACTORESPECULADOR);
     }
     
+    @Override
+    protected boolean puedoEdificarHotel(CasillaCalle casilla){
+        boolean puedoEdificarHotel = false;
+        float precio = casilla.getPrecioEdificar();
+        
+        if(this.puedoGastar(precio / FACTORESPECULADOR)){
+            if(casilla.getNumHoteles()< JugadorEspeculador.HotelesMax){
+                //[propiedad.getNumCasas()>=getCasasPorHotel()]
+                if(casilla.getNumCasas() >= JugadorEspeculador.CasasPorHotel){
+                    puedoEdificarHotel = true;
+                }
+            }
+        }
+        
+        return puedoEdificarHotel;
+    }
+    
+    @Override
+    protected boolean puedoEdificarCasa(CasillaCalle casilla){
+        float precioEdificar = casilla.getPrecioEdificar();
+        boolean puedoEdificar = false;
+        
+        if(this.puedoGastar(precioEdificar / FACTORESPECULADOR) && casilla.getNumCasas() < JugadorEspeculador.CasasMax){
+            puedoEdificar = true;
+        }
+        
+        return puedoEdificar;
+    }
+    
     /*
     @Override
     public boolean puedoGastar(){

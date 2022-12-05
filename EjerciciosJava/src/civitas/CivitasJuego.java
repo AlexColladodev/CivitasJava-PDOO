@@ -47,15 +47,15 @@ public class CivitasJuego {
     }
     
     private void inicializaMazoSorpresas(){//Crear todas las sorpresas
-        this.mazo.alMazo(new SorpresaPagarCobrar("Cobrar 25", 25));
-        this.mazo.alMazo(new SorpresaPagarCobrar("Pagar 25", -25));
-        this.mazo.alMazo(new SorpresaPagarCobrar("Cobrar 50", 50));
-        this.mazo.alMazo(new SorpresaPagarCobrar("Pagar 50", -50));
+        this.mazo.alMazo(new SorpresaPagarCobrar("Cobrar 250", 250));
+        this.mazo.alMazo(new SorpresaPagarCobrar("Pagar 250", -250));
+        this.mazo.alMazo(new SorpresaPagarCobrar("Cobrar 500", 500));
+        this.mazo.alMazo(new SorpresaPagarCobrar("Pagar 500", -500));
         this.mazo.alMazo(new SorpresaConvertirme("Convertido en Jugador Especulador"));
-        this.mazo.alMazo(new SorpresaPorCasaHotel("Pagar 25 por cada casa u hotel", 25));
-        this.mazo.alMazo(new SorpresaPorCasaHotel("Pagar 25 por cada casa u hotel", 25));
-        this.mazo.alMazo(new SorpresaPorCasaHotel("Pagar 150 por cada casa u hotel", 150));
-        this.mazo.alMazo(new SorpresaPorCasaHotel("Pagar 150 por cada casa u hotel", 150));
+        this.mazo.alMazo(new SorpresaPorCasaHotel("Pagar 100 por cada casa u hotel", -100));
+        this.mazo.alMazo(new SorpresaPorCasaHotel("Pagar 100 por cada casa u hotel", -100));
+        this.mazo.alMazo(new SorpresaPorCasaHotel("Pagar 200 por cada casa u hotel", -200));
+        this.mazo.alMazo(new SorpresaPorCasaHotel("Pagar 200 por cada casa u hotel", -200));
         
     }
     

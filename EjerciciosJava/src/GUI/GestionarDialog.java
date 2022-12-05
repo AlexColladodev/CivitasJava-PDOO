@@ -18,6 +18,8 @@ public class GestionarDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.gestionElegida = -1;
+        setLocationRelativeTo(null);
+        
         
         
         DefaultListModel gestiones = new DefaultListModel<>();

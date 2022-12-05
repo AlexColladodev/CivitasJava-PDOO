@@ -21,6 +21,7 @@ public class PropiedadesDialog extends javax.swing.JDialog {
         initComponents();
         this.jugador = jugador;
         this.propiedadElegida = -1;
+        setLocationRelativeTo(null);
         
         DefaultListModel propiedades = new DefaultListModel<>();
         
